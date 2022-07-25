@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    
     <header>
         <nav id="navigation" class="nav-bar">
             <ul class="nav nav-pills">
@@ -24,15 +25,28 @@
                 
             </ul>
         </nav>
+        
+        <div id="rideau"></div>
 
+        <div id="WIP">
+            <div>
+
+                <button class="fermer" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="background-color: rgb(250, 250, 250);">
+                    <span aria-hidden="true" style="font-variant:small-caps; font-size:3em; ">&times;</span>
+                </button>
+            </div>
+            <div>
+                <h1>Site en cours de construction !</h1>
+            </div>
+        </div>
         
 
         <div class="toast-container ">
-            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
                 
                 <div class="toast-body" >
                     <h1>Me contacter</h1>
-                    <button id="fermer" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <button class="fermer" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                         <span aria-hidden="true" style="font-variant:small-caps; font-size:larger">&times;</span>
                       </button>
                     <section>

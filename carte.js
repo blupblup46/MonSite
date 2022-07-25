@@ -1,10 +1,20 @@
 let toast;
-const fermer = document.getElementById("fermer")
+const fermer = document.getElementsByClassName("fermer")
+const rideau = document.getElementById('rideau')
 
 
-fermer.addEventListener("click", function(){
+
+fermer[0].addEventListener("click", function(){
     console.log("ferme")
-    toast.hide()
+    document.getElementById("WIP").style.display = "none";
+    rideau.style.display = "none";
+})
+
+fermer[1].addEventListener("click", function(){
+  console.log("ferme")
+  toast.hide()
+  rideau.style.display = "none";
+
 })
 
 
@@ -13,7 +23,8 @@ const toastLiveExample = document.getElementById('liveToast')
 if (toastTrigger) {
   toastTrigger.addEventListener('click', () => {
     toast = new bootstrap.Toast(toastLiveExample)
-
+    console.log("ui")
+    rideau.style.display = "block"
     toast.show()
   })
 }

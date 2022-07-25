@@ -53,7 +53,7 @@ h2, h3, a{
 }
 
 header{
-    position: sticky;
+    position: fixed;
     background-color: rgb(255, 255, 255);
     top: 0px;
     height: 100px;
@@ -61,7 +61,6 @@ header{
     justify-content: center;
     width: 100%;
     border-bottom: 1px solid rgb(129, 217, 168) ;
-    overflow:hidden ;
 }
 
 
@@ -359,3 +358,37 @@ button{
     background-color: rgb(250, 250, 250);
 }
 
+#WIP{
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    top: 200px;
+    width: 800px;
+    height: 200px;
+    z-index: 10;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: rgba(250, 250, 250);
+    padding: 3em;
+}
+#WIP div:first-child{
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+}
+
+#rideau{
+    width: 100%;
+    height: 10000px;
+    display: block;
+    z-index: 9;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
+}
