@@ -5854,7 +5854,7 @@ textarea.form-control-lg {
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
-  display: block;
+  display: inline-flex;
 }
 
 /* rtl:begin:ignore */
