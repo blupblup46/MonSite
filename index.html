@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Louan Robert</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./bootstrap-5.2.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap-5.2.0-dist/css/bootstrap.css">
+
 </head>
 
 <body>
@@ -31,7 +32,7 @@
         <div id="WIP">
             <div>
 
-                <button class="fermer" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="background-color: rgb(250, 250, 250);">
+                <button type="button" class="fermer ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="background-color: rgb(250, 250, 250);">
                     <span aria-hidden="true" style="font-variant:small-caps; font-size:3em; ">&times;</span>
                 </button>
             </div>
@@ -46,7 +47,7 @@
                 
                 <div class="toast-body" >
                     <h1>Me contacter</h1>
-                    <button class="fermer" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <button type="button" class="fermer ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                         <span aria-hidden="true" style="font-variant:small-caps; font-size:larger">&times;</span>
                       </button>
                     <section>
@@ -54,7 +55,7 @@
                             <figure>
                                 <img src="./images/mail" alt="Mail" width="150">
                             </figure>
-                            <p><a href="mailto: louan46@gmail.com">louan46@gmail.com</a></p>
+                            <p><a href="mailto:louan46@gmail.com">louan46@gmail.com</a></p>
                         </div>
                 
                         <div>
@@ -89,7 +90,7 @@
     </header>
     <main data-bs-spy="scroll" data-bs-target="#navigation">
         
-        <section id= "presentation" class="anchor">
+        <section id="presentation" class="anchor">
             <h1>Hello world !</h1>
             <div>
                 <figure>
@@ -97,15 +98,13 @@
                 </figure>
                 <div>
                  
-                    <article>
-                        <h2 id="nom">Louan Robert</h2>
-                        <p>Actuellement en deuxième année de BUT informatique à l'IUT de Lannion après une <a href="#formation">réorientation</a>, j'ai pour objectif après mes études de plonger dans le monde du travail.</p>
-                    </article>
-                    <article>
-                        <h2>Mes centres d'intérêt</h2>
-                        <p>Depuis mes années de lycée, j'ai développé un goût pour les sciences et l'éducation. Réunir les deux était alors une évidence lors de mon choix d'orientation.<br> 
-                        Une autre de mes passions est le bricolage. Donner une seconde vie aux objets m'est gratifiant et permet de les éloigner des poubelles un peu plus longtemps.</p>
-                    </article>
+                    <h2>Louan Robert</h2>
+                    <p>Actuellement en deuxième année de BUT informatique à l'IUT de Lannion après une <a href="#formation">réorientation</a>, j'ai pour objectif après mes études de plonger dans le monde du travail.</p>
+                
+                    <h2>Mes centres d'intérêt</h2>
+                    <p>Depuis mes années de lycée, j'ai développé un goût pour les sciences et l'éducation. Réunir les deux était alors une évidence lors de mon choix d'orientation.<br> 
+                    Une autre de mes passions est le bricolage. Donner une seconde vie aux objets m'est gratifiant et permet de les éloigner des poubelles un peu plus longtemps.</p>
+                   
                 </div>
             </div>
             
@@ -120,7 +119,7 @@
                 <div>
                     <h2>BUT informatique</h2>
                     <h3>2021-2024</h3>
-                    <p>Actuellement en première année de BUT informatique à <a href="https://iut-lannion.univ-rennes1.fr/informatique">l'IUT de Lannion</a>.</p>
+                    <p>Actuellement en deuxième année de BUT informatique à <a href="https://iut-lannion.univ-rennes1.fr/informatique">l'IUT de Lannion</a>.</p>
                 </div>
                 
             </article>
@@ -212,11 +211,14 @@
 <!--En faire un carousel-->
         <section id="competences" class="anchor">
             <h1>Compétences</h1>
+
+           
             <article>
+
                 <div>
                     <div>
-                        <h2>Développement web</h2>
-                        <p><a href="projets">Projets</a></p>
+                        <h2>Web</h2>
+                        <p><a href="#projets">Projets</a></p>
                     </div>
                 
                     <table>
@@ -230,8 +232,11 @@
                                 </td>
                             </tr>
                             <tr >
-                                <td colspan="2">
+                                <td>
                                     <img src="./images/bootstrap.png" alt="Bootstrap" height="60">
+                                </td>
+                                <td>
+                                    <img src="./images/js-logo.png" alt="JavaScipt" height="60">
                                 </td>
                             </tr>
                         </tbody>
@@ -240,8 +245,8 @@
     
                 <div>
                     <div>
-                        <h2>Développement d'applications</h2>
-                        <p><a href="projets">Projets</a></p>
+                        <h2>Applications</h2>
+                        <p><a href="#projets">Projets</a></p>
                     </div>
                     
                     <table>
@@ -251,11 +256,11 @@
                                     <img src="./images/c.png" alt="C" height="75">
                                 </td>
                                 <td>
-                                    <img src="./images/Java-Logo.png" alt="Java" height="75">
+                                    <img src="./images/Java-Logo.png" alt="Java" height="80">
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <img src="./images/python.png" alt="Python" height="75">
                                 </td>
                             </tr>
@@ -273,7 +278,7 @@
                 <div>
                     <div>
                         <h2>Systèmes d'exploitation</h2>
-                        <p><a href="projets">Projets</a></p>
+                        <p><a href="#projets">Projets</a></p>
                     </div>
                     
                     <table>
@@ -321,74 +326,134 @@
 
         <section id="projets" class="anchor">
             <h1>Projets</h1>
-            <article>
-                <div>
-                    
-                    <h2>Site de KOH Frais</h2>
-                    <p>En <strong>équipe</strong> de 4</p>
-                    <p>Lors de ce projet, nous avons étudié des <strong> besoins</strong> d'un client, construit la <strong>maquette</strong> et la <strong>charte graphique</strong> de notre site et avons codé en utilisant le <strong>framework Bootstrap</strong>.</p>
-                    <div>
-                        <h3>Outils</h3>
-                        <p>HTML, CSS, Bootstrap, Figma</p>
-                    </div>
-                    <div>
-                        <h3>Acquis</h3>
-                        <p>Être chef de projet, étudier des besoins, utilisation de GitHub</p>
-                    </div>
-                    
-                </div>
-                <figure>
-                    <img src="./images/projet1.webp" alt="Projet 1" width="500">
-                </figure>
-                
-            </article>
+            <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="false">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
 
-            <article>
-                <div>
-                    <h2>Jeux de Yams</h2>
-                    <p>En <strong>autonomie</strong></p>
-                    <p>L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.
-                    </p>
-                    <div>
-                        <h3>Outils</h3>
-                        <p>C, Doxygen</p>
-                    </div>
-                    <div>
-                        <h3>Acquis</h3>
-                        <p>Travailler sur un gros projet, capacités organisationnelles</p>
-                    </div>
                 </div>
-                <figure>
-                    <img src="./images/Projet2.webp" alt="Projet 2" width="200">
-                </figure>
-                
-            </article>
+                <div class="carousel-inner">
+                    
+                    <div class="carousel-item active">
+                        <section>
+                    
+                            <h2>Site de KOH Frais</h2>
+                            <p>En <strong>équipe</strong> de 4</p>
+                            <p>Lors de ce projet, nous avons étudié des <strong> besoins</strong> d'un client, construit la <strong>maquette</strong> et la <strong>charte graphique</strong> de notre site et avons codé en utilisant le <strong>framework Bootstrap</strong>.</p>
+                            <div>
+                                <h3>Outils</h3>
+                                <p>HTML, CSS, Bootstrap, Figma</p>
+                            </div>
+                            <div>
+                                <h3>Acquis</h3>
+                                <p>Être chef de projet, étudier des besoins, utilisation de GitHub</p>
+                            </div>
+                            
+                        </section>
+                        <figure>
+                            <img src="./images/projet1.webp" alt="Projet 1" width="400">
+                        </figure>
+                    </div>
 
-            <article>
-                <div>
-                    <h2>Graph-ô-tron</h2>
-                    <p>En <strong>équipe</strong></p>
-                    <p>Pour ce projet, nous avons <strong>modélisé en UML</strong> nos scripts et leurs interactions. Nous nous sommes <strong>distribué les tâches</strong> de codage et avons produit une application ainsi que sa <strong>documentation technique</strong>.</p>
-                    <div>
-                        <h3>Outils</h3>
-                        <p>Docker, Bash, PHP, Gnuplot, Trello</p>
+                    
+                    <div class="carousel-item">
+                        <section>
+                            <h2>Jeux de Yams</h2>
+                            <p>En <strong>autonomie</strong></p>
+                            <p>L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.
+                            </p>
+                            <div>
+                                <h3>Outils</h3>
+                                <p>C, Doxygen</p>
+                            </div>
+                            <div>
+                                <h3>Acquis</h3>
+                                <p>Travailler sur un gros projet, capacités organisationnelles</p>
+                            </div>
+                        </section>
+                        <figure>
+                            <img src="./images/Projet2.webp" alt="Projet 2" width="200">
+                        </figure>                    
                     </div>
-                    <div>
-                        <h3>Acquis</h3>
-                        <p>Communication au client, respecter des contraintes, conception UML</p>
+
+                    <div class="carousel-item">
+                        <section>
+                    
+                            <h2>Cette page personnelle</h2>
+                            <p>En <strong>autonomie</strong></p>
+                            <p>Afin de réaliser cette page, j'ai suivi des <strong>MOOC</strong> pour apprendre les bases de Javascript. Ensuite, après avoir réalisé ma <strong>maquette</strong>, j'ai construit ma page en utilisant <strong>Bootstrap</strong>. Finalement, j'ai publié ma page grâce à Github Pages</p>
+                            <div>
+                                <h3>Outils</h3>
+                                <p>HTML, CSS, Bootstrap, Figma, Javascript</p>
+                            </div>
+                            <div>
+                                <h3>Acquis</h3>
+                                <p>Suivre un MOOC, suivre un projet personnelle, utilisation de GitHub</p>
+                            </div>
+                            
+                        </section>
+                        <figure>
+                            <video id="capture" width="500" height="500" controls></video>
+                        </figure>
+                    </div>
+
+                    <div class="carousel-item">
+                        <section>
+                            <h2>Graph-ô-tron</h2>
+                            <p>En <strong>équipe</strong></p>
+                            <p>Pour ce projet, nous avons <strong>modélisé en UML</strong> nos scripts et leurs interactions. Nous nous sommes <strong>distribué les tâches</strong> de codage et avons produit une application ainsi que sa <strong>documentation technique</strong>.</p>
+                            <div>
+                                <h3>Outils</h3>
+                                <p>Docker, Bash, PHP, Gnuplot, Trello</p>
+                            </div>
+                            <div>
+                                <h3>Acquis</h3>
+                                <p>Communication au client, respecter des contraintes, conception UML</p>
+                            </div>
+                        </section>
+                        <figure>
+                            <img src="./images/Projet3.webp" alt="Projet 3" width="350">
+                        </figure>                    
+                    </div>
+
+                    <div class="carousel-item">
+                        <section>
+                            <h2>Base de données d'étudiants</h2>
+                            <p>En <strong>équipe</strong></p>
+                            <p>Pour ce projet, nous avons <strong>développé</strong> une base de données à partir d'un <strong>diagramme UML</strong> regroupant des informations d'étudiants. Nous avons <strong>peuplé</strong> notre base à partir de <strong>fichier tableur</strong> puis nous l'avons exploitée avec quelques requettes.</p>
+                            <div>
+                                <h3>Outils</h3>
+                                <p>PostGreSQL, PLPGSQL</p>
+                            </div>
+                            <div>
+                                <h3>Acquis</h3>
+                                <p>Communication au client, respecter des contraintes, conception UML</p>
+                            </div>
+                        </section>
+                        <figure>
+                            <img src="./images/Projet4.jpeg" alt="Projet 4" width="350">
+                        </figure>                    
                     </div>
                 </div>
-                <figure>
-                    <img src="./images/Projet3.webp" alt="Projet 3" width="350">
-                </figure>
-                
-            </article>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </section>
     </main>
 
     
     <script src="./bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
     <script src="./carte.js"></script>
+    <script src="./captureVideo.js"></script>
 
 </body>
 </html>

@@ -1,8 +1,6 @@
 let toast;
 const fermer = document.getElementsByClassName("fermer")
-const rideau = document.getElementById('rideau')
-
-
+const rideau = document.getElementById('rideau');
 
 fermer[0].addEventListener("click", function(){
     console.log("ferme")

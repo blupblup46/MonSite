@@ -11,11 +11,13 @@
 }
 
 body{
+    z-index: 0;
     background-color: rgb(255, 255, 255);
     font-size: large;
     font-family: PWix;
     text-justify: auto;
 }
+
 
 p{
     line-height: 1.5em;
@@ -35,6 +37,7 @@ strong, h1{
 h1{
     font-size: 3em;
     font-family: PWixBold;
+    padding: 0.5em;
 }
 
 h2{
@@ -56,14 +59,14 @@ header{
     position: fixed;
     background-color: rgb(255, 255, 255);
     top: 0px;
+    margin-left: auto;
+    margin-right: auto;
     height: 100px;
     display: inline-flex;
     justify-content: center;
     width: 100%;
     border-bottom: 1px solid rgb(129, 217, 168) ;
 }
-
-
 
 li{
     display: inline-flex;
@@ -90,24 +93,7 @@ main{
     flex-direction: column;
 
 }
-#presentation{
-    width: 100%;
-}
 
-#presentation div{
-    width: 1000px;
-}
-section{
-    width: 75%;
-    display: inline-flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-#presentation>div{
-    display: inline-flex;
-    flex-direction: row;
-}
 
 p{
     text-align: justify;
@@ -118,13 +104,36 @@ figure{
     margin: 1em;
 }
 
-#nom{
-    text-align: left;
-    font-size: 2em;
-    padding-left: 1em;
+section{
+    width: 75%;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
 }
 
+#presentation{
+    width: 100%;
+}
 
+#presentation div{
+    width: 1000px;
+}
+
+#presentation>div{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+#presentation div>div{
+    display: inline-flex;
+    flex-direction: column;
+}
+
+#presentation h2:first-of-type{
+    font-size: 3em;
+    text-align: left;
+    padding-left: 1em;
+}
 
 #formation{
     background-color: rgb(250, 250, 250);
@@ -197,6 +206,9 @@ figure{
     justify-content: center;
     width: 100%;
 }
+#competences h2, #competences p{
+    text-align: left;
+}
 
 #competences td{
     text-align: center;
@@ -208,7 +220,7 @@ figure{
     display: inline-flex;
     margin: 1em;
     padding: 0em;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     border: 1px black solid;
     box-shadow: 1px 1px 1px 1px;
@@ -234,48 +246,35 @@ figure{
 #projets{
     display: inline-flex;
     justify-content: center;
-    width: 100%;
-}
-
-#projets article{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 1200px;
+    flex-direction: column;
     
 }
-
-#projets article h2, #projets article h3, #projets article h2+p, #projets article h3+p{
+.carousel-item h2, 
+.carousel-item h3, 
+.carousel-item h2+p, 
+.carousel-item h3+p{
     padding: 0em;
     margin: 0em;
 }
 
-#projets article div{
+.carousel-item figure, .carousel-item section{
+    width: 500px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 500px;
+}
+.carousel-item.active{
+    text-align: center;
+    height: 550px;
+    width: 1200px;
+    padding-right: 5em;
+    padding-left: 5em;
+    padding-bottom: 1em;
+    margin-right: 5em;
+    margin-left: 5em;
 }
 
-#projets article+article{
-    flex-direction: row-reverse;
-}
 
-#projets article+article+article{
-    flex-direction: row;
-}
-
-#projets figure{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-}
-
-#projets article div div{
-    margin: 0.5em;
-}
 
 .CV{
     display: inline-flex;
@@ -364,8 +363,8 @@ button{
     margin-left: auto;
     top: 200px;
     width: 800px;
-    height: 200px;
     z-index: 10;
+    height: 200px;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
