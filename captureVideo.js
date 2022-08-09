@@ -1,6 +1,6 @@
 let captureVideo = document.getElementById("capture")
 
-function startRecording(stream, lengthInMS) {
+function startRecording(stream) {
   let recorder = new MediaRecorder(stream);
   recorder.start();
 }
@@ -12,6 +12,6 @@ captureVideo.addEventListener("click", function() {
   }).then(stream => {
     captureVideo.srcObject = stream;
     captureVideo.captureStream = captureVideo.captureStream || captureVideo.mozCaptureStream;
-  }).then(() => startRecording(captureVideo.captureStream(), recordingTimeMS))
+  }).then(() => startRecording(captureVideo.captureStream()))
 }, false);
 
