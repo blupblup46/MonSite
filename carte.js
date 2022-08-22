@@ -1,6 +1,6 @@
 let toast;
 const fermer = document.getElementsByClassName("fermer")
-const rideau = document.getElementById('rideau');
+//const rideau = document.getElementById('rideau');
 
 /* plus qu'un element de classe 'fermer' après suppression du message 'site en construction'
 fermer[0].addEventListener("click", function(){
@@ -30,7 +30,7 @@ if (toastTrigger) {
   toastTrigger.addEventListener('click', () => {
     toast = new bootstrap.Toast(toastLiveExample)
     console.log("ui")
-    rideau.style.display = "block"
+    //rideau.style.display = "block"
     toast.show()
   })
 }
