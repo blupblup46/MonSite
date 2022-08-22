@@ -20,7 +20,7 @@ fermer[1].addEventListener("click", function(){
 fermer[0].addEventListener("click", function(){
   console.log("ferme")
   toast.hide()
-  rideau.style.display = "none";
+  //rideau.style.display = "none";
 
 })
 
