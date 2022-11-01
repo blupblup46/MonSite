@@ -5,15 +5,15 @@ class Canard{
     this.rotation = Math.floor(Math.random() * 360)
     this.fontSize = Math.floor(Math.random() * 5)
     this.couleur= "rgb("+ Math.floor(Math.random() * 255).toString()+" "+Math.floor(Math.random() * 255).toString()+" "+Math.floor(Math.random() * 255).toString()+")"
+    this.sound = new Audio("./CANARD.mp3");
   }
 }
 
 const boutton = document.getElementById("boutton");
 const fond = document.getElementById("CANARD");
 
-
 boutton.addEventListener("click", function(){  
-  const sonCanard = new Audio("./CANARD.mp3");
+  
   let c = new Canard();
 
   nouvCanard = document.createElement("div")
@@ -23,8 +23,9 @@ boutton.addEventListener("click", function(){
   nouvCanard.style.top= c.y.toString()+"px";
   nouvCanard.style.fontSize = c.fontSize.toString()+"em";
   nouvCanard.style.color = c.couleur.toString()
+  nouvCanard.style.transform = "rotate("+c.rotation+"deg)";
   console.log(c.couleur.toString())
-  sonCanard.play();
+  c.sound.play();
   fond.appendChild(nouvCanard);
   console.log("fait"+ c.x.toString()+"px" + c.y.toString()+"px")
 })
