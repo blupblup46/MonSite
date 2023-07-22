@@ -1,0 +1,133 @@
+body{
+    background-color: white;
+}
+
+p, button{
+    color: white;
+
+}
+button, div{
+    font-size: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+main{
+    background-color: #DDDDDD ;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px grey;
+    border: 1px solid black;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+article{
+    height: 550px;
+    width: 500px;
+    display: flex;
+
+}
+
+#raz{
+    border-radius: 10px 0px 0px 10px;
+    background-color: grey;
+    font-size: 20px;
+}
+
+#suppr{
+    border-radius: 0px 10px 10px 0px;
+    background-color: grey;
+    font-size: 20px;
+
+}
+
+article button{
+    background-color: grey;
+    border: 1px solid black;
+    height: 110px;
+    width: 110px;
+    border-radius: 500px;
+}
+
+article section:first-child{
+    display: inline-flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: row;
+}
+
+button{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+article section:last-child{
+
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+}
+
+section{
+    padding:0px;
+}
+
+article section:last-child button:first-child{
+    height:250px;
+}
+
+.boutons{
+    width:110px;
+    display: inline-flex;
+    position: relative;
+    right:5px;
+    top:5px;
+}
+
+.boutons button{
+    width:55px;
+    margin:0px;
+}
+
+
+#ecran{
+    position: absolute;
+    left:10px;
+    top:10px;
+    width:345px;
+    height:100px;
+    background-color: #C9FCFF;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    padding: 0px 5px;
+
+}
+
+#ecran p{
+    border: 1px solid black;
+    width: 100%;
+}
+
+main div:first-child button{
+    
+
+    height:100px;
+
+    background-color: #7CA8EB;
+    border: 1px solid black;
+    font-size: 0.5em;
+}
