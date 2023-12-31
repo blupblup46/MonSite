@@ -1,3 +1,57 @@
+@font-face {
+    font-family: "PWixRegular";
+    src: url("/fonts/bahij_janna-regular-webfont.woff2") format("woff2"),
+         url("/fonts/bahij_janna-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "PWixBold";
+    src: url("/fonts/bahij_janna-bold-webfont.woff2") format("woff2"),
+         url("/fonts/bahij_janna-bold-webfont.woff") format("woff");
+}
+
+:root {
+    --mainColor: #29ab87;
+    --secondaryColor: #298eab;
+    --white: #efefef;
+    --navWidth: 15%;
+  }
+
+
+body{
+    z-index: 0;
+    background-color: var(--white);
+    font-size: large;
+    font-family: PWix;
+    text-justify: auto;
+}
+
+
+p{
+    line-height: 1.5em;
+    text-align: justify;
+}
+
+strong, h1{
+    color: var(--mainColor);
+}
+
+h1{
+    font-size: 3em;
+    font-family: PWixBold;
+}
+
+h2{
+    font-size: 1.5em;
+    font-family: PWixBold;
+    text-align: center;
+    width: 100%;
+}
+
+h2, h3, a{
+    color: var(--secondaryColor);
+
+}
 
 ul{
     list-style: none;
@@ -15,9 +69,20 @@ ul{
     text-decoration: underline;
 }
 
+.hidden{
+    display: none;
+}
+
+.visible{
+    display: flex;
+    width: 100%;
+}
+
 ul a {
-    color: black;
     text-decoration: none;    
+    font-family: PWixBold;
+    font-size: larger;
+    color: var(--white);
 }
 
 details:hover{
@@ -25,37 +90,66 @@ details:hover{
 }
 
 nav{
-    height: 100%;
+    position: fixed;
+    left: 0px;
     display: flex;
+    width: var(--navWidth);
+    
+    height: 100%;
     align-items: center;
     justify-items: center;
 
     font-size: large;
     font-family: 'Courier New', Courier, monospace;
 
-    background-color: #4dbfd9;
+    background-color: var(--mainColor);
 }
+
+body>div img{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+body>div{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: var(--mainColor);
+    border-radius: 0px 0px 10px 0px;
+    display: none;
+    z-index: 10000 !important;
+}
+
+
 
 html, body{
     display: flex;
     flex-direction: row;
-    height: 100%;
-    width: 100%;
-    margin: 0em;
-
+    padding:0px;
+    margin: 0px;
 }
 
 main{
-    position: inherit;
-    height: 100%;
-    width: 100%;
-    background-color: #efefef;
+    position: absolute;
+    left:var(--navWidth);
+    background-color: var(--white);
+    padding: 5em;
+}
+
+figure{
+    display: flex;
+    justify-content: center;
 }
 
 /* SECOND NAV */
 
 body nav + nav{
-    background-color: #2381ed;
+    background-color: var(--mainColor);
     display:flex;
     flex-basis:200px;
     flex-direction: column;
@@ -65,4 +159,82 @@ body nav + nav{
 
 body nav + nav details{
     margin: 1em;
+}
+
+/* INTRO */
+
+main[activePage="Intro"]{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main[activePage="Intro"] article{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+main[activePage="Intro"] article>figure img{
+    max-width: 100%;
+    height: auto;
+}
+
+main[activePage="Intro"] article:last-child{
+    margin-top: 5%;
+    justify-content: space-evenly;
+}
+
+main[activePage="Intro"] article:last-child div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 200px;
+    box-shadow: 1px 1px 5px 1px;
+    border-radius: 10px;
+
+}
+
+main[activePage="Intro"] article:last-child img{
+    width: 60%;
+}
+
+@media (height< 600px) , (width< 1000px){
+    main[activePage="Intro"] article:last-child{
+        display:none;
+    }
+
+    main[activePage="Intro"], main[activePage="Intro"] article{
+        flex-direction: column;
+    }
+
+    main[activePage="Intro"] article img{
+        width: 50%;
+        height: 10px;
+    }
+
+
+    main{
+        position: inherit;
+    }
+
+    p{
+        font-size: 1em;
+    }
+
+    h1{
+        font-size: 1.75em;
+    }
+
+    h2, h3{
+        font-size: 1.5em;
+    }
+
+    body>div{
+        display: block;
+    }
+    
 }
