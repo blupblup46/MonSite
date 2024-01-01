@@ -75,7 +75,7 @@ ul{
 
 .visible{
     display: flex;
-    width: 25%;
+    width: 50%;
 }
 
 ul a {
@@ -206,13 +206,14 @@ main[activePage="Intro"] article:last-child img:hover{
     }
 
     main[activePage="Intro"] article img{
-        width: 50%;
-        height: 10px;
+        width: 70%;
     }
 
 
     main{
         position: inherit;
+        width: 100%;
+        padding: 2em;
     }
 
     p{
