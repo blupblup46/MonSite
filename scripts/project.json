@@ -1,0 +1,64 @@
+{
+
+    "BUT": [
+        {
+            "title": "Jeux de Yams",
+            "context": "En <strong>autonomie</strong>",
+            "details": "L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.",
+            "tools": "C, Doxygen",
+            "learned": "Travailler sur un gros projet, capacités organisationnelles",
+            "image": {
+                "src": "./images/Projet2.webp",
+                "alt": "Projet 2",
+                "title": "Yams",
+                "width": "200"
+        
+            }
+        },
+        {
+            "title": "Jeux de ms",
+            "context": "En <strong>autonomie</strong>",
+            "details": "L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.",
+            "tools": "C, Doxygen",
+            "learned": "Travailler sur un gros projet, capacités organisationnelles",
+            "image": {
+                "src": "./images/Projet2.webp",
+                "alt": "Projet 2",
+                "title": "Yams",
+                "width": "200"
+        
+            }
+        }
+    ],
+    "HJHK": [
+        {
+            "title": "Jeux de Yajhgms",
+            "context": "En <strong>autonomie</strong>",
+            "details": "L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.",
+            "tools": "C, Doxygen",
+            "learned": "Travailler sur un gros projet, capacités organisationnelles",
+            "image": {
+                "src": "./images/Projet2.webp",
+                "alt": "Projet 2",
+                "title": "Yams",
+                "width": "200"
+        
+            }
+        },
+        {
+            "title": "Jeux de Yakllllllllms",
+            "context": "En <strong>autonomie</strong>",
+            "details": "L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.",
+            "tools": "C, Doxygen",
+            "learned": "Travailler sur un gros projet, capacités organisationnelles",
+            "image": {
+                "src": "./images/Projet2.webp",
+                "alt": "Projet 2",
+                "title": "Yams",
+                "width": "200"
+        
+            }
+        }
+    ]
+}
+
