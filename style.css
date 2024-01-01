@@ -75,7 +75,7 @@ ul{
 
 .visible{
     display: flex;
-    width: 100%;
+    width: 25%;
 }
 
 ul a {
@@ -186,20 +186,14 @@ main[activePage="Intro"] article:last-child{
     justify-content: space-evenly;
 }
 
-main[activePage="Intro"] article:last-child div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-    height: 200px;
-    box-shadow: 1px 1px 5px 1px;
-    border-radius: 10px;
-
-}
 
 main[activePage="Intro"] article:last-child img{
-    width: 60%;
+    height: 10vh;
+    margin: 1em;
+}
+
+main[activePage="Intro"] article:last-child img:hover{
+    cursor: pointer;
 }
 
 @media (height< 600px) , (width< 1000px){

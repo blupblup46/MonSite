@@ -44,7 +44,7 @@ function navHidder() {
         nav.classList.add(CssClasses.hidden);
     }
     else {
-        nav.classList.add(CssClasses.visible);
+        nav.classList.remove(CssClasses.visible);
         nav.classList.remove(CssClasses.hidden);
     }
 }
