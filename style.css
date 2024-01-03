@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "PWixRegular";
+    font-family: "PWix";
     src: url("/fonts/bahij_janna-regular-webfont.woff2") format("woff2"),
          url("/fonts/bahij_janna-regular-webfont.woff") format("woff");
 }
@@ -28,6 +28,7 @@ body{
 
 
 p{
+    font-family: PWix;
     line-height: 1.5em;
     text-align: justify;
 }
@@ -46,6 +47,10 @@ h2{
     font-family: PWixBold;
     text-align: center;
     width: 100%;
+}
+
+h3{
+    font-family: PWixBold;
 }
 
 h2, h3, a{
@@ -76,6 +81,7 @@ ul{
 .visible{
     display: flex;
     width: 50%;
+    z-index: 1000;
 }
 
 ul a {
@@ -90,12 +96,10 @@ details:hover{
 }
 
 nav{
-    position: fixed;
+    float: left;
     left: 0px;
     display: flex;
-    width: var(--navWidth);
-    
-    height: 100%;
+    height: 100vh;
     align-items: center;
     justify-items: center;
 
@@ -122,7 +126,7 @@ body>div{
     background-color: var(--mainColor);
     border-radius: 0px 0px 10px 0px;
     display: none;
-    z-index: 10000 !important;
+    z-index: 10000 ;
 }
 
 
@@ -132,13 +136,16 @@ html, body{
     flex-direction: row;
     padding:0px;
     margin: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 main{
-    position: absolute;
-    left:var(--navWidth);
+    float: left;    
+    right:10px ;
     background-color: var(--white);
     padding: 5em;
+    width: 100%;
 }
 
 figure{
@@ -149,17 +156,25 @@ figure{
 /* SECOND NAV */
 
 body nav + nav{
-    background-color: var(--mainColor);
+    background-color: var(--secondaryColor);
     display:flex;
     flex-basis:200px;
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    height: 100vh;
 }
 
 body nav + nav details{
     margin: 1em;
 }
+
+body nav + nav li{
+
+    margin-top: 1em;
+    list-style: disc;
+}
+
 
 /* INTRO */
 
@@ -196,6 +211,62 @@ main[activePage="Intro"] article:last-child img:hover{
     cursor: pointer;
 }
 
+/* PROJECTS */
+
+main[activePage="Projects"]{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+main[activePage="Projects"] img{
+    width: 40vh;
+}
+
+
+/* EDUCATION */
+
+main[activePage="Education"]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main[activePage="Education"] section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 0em 1em;
+    box-shadow: 1px 1px 3px 1px ;
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+main[activePage="Education"] section > div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 100px;
+    width: 100%;
+}
+
+main[activePage="Education"] section > div h3,
+main[activePage="Education"] section > div h2{
+   padding: 0px;
+   margin: 0px;
+}
+
+main[activePage="Education"] img{
+    max-width: 100%;
+    height: auto;    
+    display: block;  
+    margin: auto; 
+}
+
+
 @media (height< 600px) , (width< 1000px){
     main[activePage="Intro"] article:last-child{
         display:none;
@@ -212,8 +283,8 @@ main[activePage="Intro"] article:last-child img:hover{
 
     main{
         position: inherit;
-        width: 100%;
-        padding: 2em;
+        /* width: 100%; */
+        /* padding: 2em; */
     }
 
     p{
@@ -232,4 +303,7 @@ main[activePage="Intro"] article:last-child img:hover{
         display: block;
     }
     
+    main[activePage="Education"] figure{
+        display: none;
+    }
 }
