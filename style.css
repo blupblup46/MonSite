@@ -82,6 +82,9 @@ ul{
     display: flex;
     width: 50%;
     z-index: 1000;
+    position: fixed;
+    height: 100vh;
+
 }
 
 ul a {
