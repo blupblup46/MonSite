@@ -1,5 +1,4 @@
 const activePage = document.getElementsByTagName("main")[0].getAttribute("activePage") as string;
-const details = document.querySelectorAll("details");
 const projectsNav = document.querySelector("nav:nth-child(2)") as HTMLElement;
 
 const burgerMenuButton = document.querySelector("body>div") as HTMLElement;
@@ -43,7 +42,7 @@ switch(activePage){
 
 function onDetailsOpen(){
   if(this.open){
-    details.forEach(d=>{
+    document.querySelectorAll("details").forEach(d=>{
       if (this != d){
         d.open = false;
       }
@@ -70,7 +69,6 @@ function init(){
   navHidder();
 
   burgerMenuButton?.addEventListener("click",() => {
-    console.log("click");
     if(nav.classList.contains(CssClasses.hidden)){
       nav.classList.remove(CssClasses.hidden);
       nav.classList.add(CssClasses.visible);
@@ -86,7 +84,6 @@ function init(){
 
 
 function buildProjects(){
-  details.forEach(d => d.addEventListener("toggle", onDetailsOpen));
 
   loadProjects()
   .then((projects ) =>{
@@ -109,15 +106,16 @@ function buildProjects(){
 function buildProjectNav(){
   projectList.forEach((projects, context)=>{
     let details = document.createElement("details");
+    details.addEventListener("toggle", onDetailsOpen);
     let summary = document.createElement("summary");
     let ul = document.createElement("ul");
 
-    summary.innerText = context;
+    summary.innerHTML = context;
     details.appendChild(summary);
     projects.forEach((project)=>{
       let li = document.createElement("li");
-      li.innerText = project.title;
-      li.addEventListener("click", buildProject);
+      li.innerHTML = project.title;
+      li.addEventListener("click", buildProjectHTML);
       ul.appendChild(li);
     })
 
@@ -126,17 +124,79 @@ function buildProjectNav(){
     projectsNav.appendChild(details)
   })
 
+  buildProjectHTML(null, projectList.values().next().value.values().next().value);
+  document.querySelectorAll("details")[0].open = true;
+  document.querySelectorAll("summary")[0].classList.add(CssClasses.underlined);
+  document.querySelectorAll("details li")[0].classList.add(CssClasses.underlined);
 }
 
-function buildProject(event){
 
-  let projectClickContext: string = event.target.parentNode.previousElementSibling.innerText;
-  let project: Project|undefined = projectList.get(projectClickContext)?.get(event.target.innerText);
-  
+function buildProjectHTML(event, project: Project|null = null){
+
+  main.innerHTML ="";
+  let clickedProject: Project|undefined|null ;
+  if(event != null){
+
+    document.querySelectorAll("details li").forEach(s=>s.removeAttribute("class"));
+    event.target.classList.add(CssClasses.underlined);
+    document.querySelectorAll("summary").forEach(s=>s.removeAttribute("class"));
+    event.target.parentNode.previousElementSibling.classList.add(CssClasses.underlined);
+
+    
+    let projectClickContext: string = event.target.parentNode.previousElementSibling.innerText;
+    clickedProject= projectList.get(projectClickContext)?.get(event.target.innerText);
+  }else{
+    clickedProject = project;
+  }
+
+  let projectSection = createElement("section");
+  appendChildren(projectSection, [
+    createElement("h2", clickedProject?.title),
+    createElement("p", clickedProject?.context),
+    createElement("p", clickedProject?.details),
+    appendChildren(createElement("div"), [
+      createElement("h3", "Outils"), 
+      createElement("p", clickedProject?.tools)
+    ]),
+    appendChildren(createElement("div"), [
+      createElement("h3", "Acquis"), 
+      createElement("p", clickedProject?.learned)
+    ]),
+
+  ]);
+
+  appendChildren(main,[
+    projectSection,
+    appendChildren(createElement("figure"), [createElement("img", null, clickedProject?.image)])
+  ])
+
 }
 
 
 async function loadProjects() : Promise<Map<string, Project[]>> {
   return fetch("/scripts/project.json")
   .then(response => response.json());
+}
+
+
+function createElement(elementTag: string, innerHTML: string|null = null, attributes: Object | null = null){
+  let element = document.createElement(elementTag);
+
+  if(innerHTML != null){
+    element.innerHTML = innerHTML;
+  }
+
+  if(attributes != null){
+    Object.keys(attributes).forEach((key) =>{
+      element.setAttribute(key, attributes[key]);
+    });
+  }
+  return element;
+}
+
+function appendChildren(element: HTMLElement, children: HTMLElement[]){
+  children.forEach(child=>{
+    element.appendChild(child);
+  })
+  return element;
 }

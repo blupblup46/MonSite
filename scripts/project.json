@@ -2,13 +2,13 @@
 
     "BUT": [
         {
-            "title": "Jeux de Yams",
+            "title": "Yams",
             "context": "En <strong>autonomie</strong>",
-            "details": "L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.",
+            "details": "L'objectif de ce premier projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.",
             "tools": "C, Doxygen",
             "learned": "Travailler sur un gros projet, capacités organisationnelles",
             "image": {
-                "src": "./images/Projet2.webp",
+                "src": "/images/Projet2.webp",
                 "alt": "Projet 2",
                 "title": "Yams",
                 "width": "200"
@@ -16,35 +16,44 @@
             }
         },
         {
-            "title": "Jeux de ms",
-            "context": "En <strong>autonomie</strong>",
-            "details": "L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.",
-            "tools": "C, Doxygen",
-            "learned": "Travailler sur un gros projet, capacités organisationnelles",
+            "title": "Site de KOH Frais",
+            "context": "En <strong>équipe</strong> de 4",
+            "details": "Lors de ce projet, nous avons étudié des <strong> besoins</strong> d'un client, construit la <strong>maquette</strong> et la <strong>charte graphique</strong> de notre site et avons codé en utilisant le <strong>framework Bootstrap</strong>.",
+            "tools": "HTML, CSS, Bootstrap, Figma",
+            "learned": "Être chef de projet, étudier des besoins, utilisation de GitHub",
             "image": {
-                "src": "./images/Projet2.webp",
-                "alt": "Projet 2",
-                "title": "Yams",
-                "width": "200"
-        
+                "src": "/images/projet1.webp",
+                "alt": "Projet 1",
+                "title": "Site vitrine de KOH frais"
+            }
+        },
+        {
+            "title": "Graph-ô-tron",
+            "context": "En <strong>équipe</strong>",
+            "details": "Pour ce projet, nous avons <strong>modélisé en UML</strong> nos scripts et leurs interactions. Nous nous sommes <strong>distribué les tâches</strong> de codage et avons produit une application ainsi que sa <strong>documentation technique</strong>.",
+            "tools": "Docker, Bash, PHP, Gnuplot, Trello",
+            "learned": "Communication au client, respecter des contraintes, conception UML",
+            "image": {
+                "src": "/images/Projet3.webp",
+                "alt": "Projet 3",
+                "title": "Générateur de graph"
+            }
+        },
+        {
+            "title": "Base de données d'étudiants",
+            "context": "En <strong>équipe</strong>",
+            "details": "Pour ce projet, nous avons <strong>développé</strong> une base de données à partir d'un <strong>diagramme UML</strong> regroupant des informations d'étudiants. Nous avons <strong>peuplé</strong> notre base à partir de <strong>fichier tableur</strong> puis nous l'avons exploitée avec quelques requettes.",
+            "tools": "PostGreSQL, PLPGSQL",
+            "learned": "Communication au client, respecter des contraintes, conception UML",
+            "image": {
+                "src": "/images/Projet4.jpeg",
+                "alt": "Projet 4",
+                "title": "BDD d'étudiants"
             }
         }
     ],
     "HJHK": [
-        {
-            "title": "Jeux de Yajhgms",
-            "context": "En <strong>autonomie</strong>",
-            "details": "L'objectif de ce projet était de proposer une version numérique du jeu de Yams. Pour cela, j'ai construit une <strong>maquette</strong> de mon programme et construit mes <strong>fonctions</strong> tout en <strong>commentant</strong> mon code. J'ai finalement produit une <strong>documentation</strong>.",
-            "tools": "C, Doxygen",
-            "learned": "Travailler sur un gros projet, capacités organisationnelles",
-            "image": {
-                "src": "./images/Projet2.webp",
-                "alt": "Projet 2",
-                "title": "Yams",
-                "width": "200"
-        
-            }
-        },
+       
         {
             "title": "Jeux de Yakllllllllms",
             "context": "En <strong>autonomie</strong>",
@@ -52,7 +61,7 @@
             "tools": "C, Doxygen",
             "learned": "Travailler sur un gros projet, capacités organisationnelles",
             "image": {
-                "src": "./images/Projet2.webp",
+                "src": "/images/Projet2.webp",
                 "alt": "Projet 2",
                 "title": "Yams",
                 "width": "200"

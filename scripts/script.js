@@ -35,7 +35,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var activePage = document.getElementsByTagName("main")[0].getAttribute("activePage");
-var details = document.querySelectorAll("details");
 var projectsNav = document.querySelector("nav:nth-child(2)");
 var burgerMenuButton = document.querySelector("body>div");
 var nav = document.querySelector("body>nav");
@@ -58,7 +57,7 @@ switch (activePage) {
 function onDetailsOpen() {
     var _this = this;
     if (this.open) {
-        details.forEach(function (d) {
+        document.querySelectorAll("details").forEach(function (d) {
             if (_this != d) {
                 d.open = false;
             }
@@ -82,7 +81,6 @@ function init() {
     window.addEventListener('resize', navHidder);
     navHidder();
     burgerMenuButton === null || burgerMenuButton === void 0 ? void 0 : burgerMenuButton.addEventListener("click", function () {
-        console.log("click");
         if (nav.classList.contains(CssClasses.hidden)) {
             nav.classList.remove(CssClasses.hidden);
             nav.classList.add(CssClasses.visible);
@@ -94,7 +92,6 @@ function init() {
     });
 }
 function buildProjects() {
-    details.forEach(function (d) { return d.addEventListener("toggle", onDetailsOpen); });
     loadProjects()
         .then(function (projects) {
         Object.keys(projects).forEach(function (context) {
@@ -111,24 +108,59 @@ function buildProjects() {
 function buildProjectNav() {
     projectList.forEach(function (projects, context) {
         var details = document.createElement("details");
+        details.addEventListener("toggle", onDetailsOpen);
         var summary = document.createElement("summary");
         var ul = document.createElement("ul");
-        summary.innerText = context;
+        summary.innerHTML = context;
         details.appendChild(summary);
         projects.forEach(function (project) {
             var li = document.createElement("li");
-            li.innerText = project.title;
-            li.addEventListener("click", buildProject);
+            li.innerHTML = project.title;
+            li.addEventListener("click", buildProjectHTML);
             ul.appendChild(li);
         });
         details.appendChild(ul);
         projectsNav.appendChild(details);
     });
+    buildProjectHTML(null, projectList.values().next().value.values().next().value);
+    document.querySelectorAll("details")[0].open = true;
+    document.querySelectorAll("summary")[0].classList.add(CssClasses.underlined);
+    document.querySelectorAll("details li")[0].classList.add(CssClasses.underlined);
 }
-function buildProject(event) {
+function buildProjectHTML(event, project) {
     var _a;
-    var projectClickContext = event.target.parentNode.previousElementSibling.innerText;
-    var project = (_a = projectList.get(projectClickContext)) === null || _a === void 0 ? void 0 : _a.get(event.target.innerText);
+    if (project === void 0) { project = null; }
+    main.innerHTML = "";
+    var clickedProject;
+    if (event != null) {
+        document.querySelectorAll("details li").forEach(function (s) { return s.removeAttribute("class"); });
+        event.target.classList.add(CssClasses.underlined);
+        document.querySelectorAll("summary").forEach(function (s) { return s.removeAttribute("class"); });
+        event.target.parentNode.previousElementSibling.classList.add(CssClasses.underlined);
+        var projectClickContext = event.target.parentNode.previousElementSibling.innerText;
+        clickedProject = (_a = projectList.get(projectClickContext)) === null || _a === void 0 ? void 0 : _a.get(event.target.innerText);
+    }
+    else {
+        clickedProject = project;
+    }
+    var projectSection = createElement("section");
+    appendChildren(projectSection, [
+        createElement("h2", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.title),
+        createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.context),
+        createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.details),
+        appendChildren(createElement("div"), [
+            createElement("h3", "Outils"),
+            createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.tools)
+        ]),
+        appendChildren(createElement("div"), [
+            createElement("h3", "Acquis"),
+            createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.learned)
+        ]),
+    ]);
+    appendChildren(main, [
+        projectSection,
+        appendChildren(createElement("figure"), [createElement("img", null, clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.image)])
+    ]);
 }
 function loadProjects() {
     return __awaiter(this, void 0, void 0, function () {
@@ -137,4 +169,24 @@ function loadProjects() {
                     .then(function (response) { return response.json(); })];
         });
     });
+}
+function createElement(elementTag, innerHTML, attributes) {
+    if (innerHTML === void 0) { innerHTML = null; }
+    if (attributes === void 0) { attributes = null; }
+    var element = document.createElement(elementTag);
+    if (innerHTML != null) {
+        element.innerHTML = innerHTML;
+    }
+    if (attributes != null) {
+        Object.keys(attributes).forEach(function (key) {
+            element.setAttribute(key, attributes[key]);
+        });
+    }
+    return element;
+}
+function appendChildren(element, children) {
+    children.forEach(function (child) {
+        element.appendChild(child);
+    });
+    return element;
 }
