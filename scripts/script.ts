@@ -1,8 +1,8 @@
 const activePage = document.getElementsByTagName("main")[0].getAttribute("activePage") as string;
-const projectsNav = document.querySelector("nav:nth-child(2)") as HTMLElement;
+const projectsNav = document.querySelector("body nav + nav") as HTMLElement;
 
 const burgerMenuButton = document.querySelector("body>div") as HTMLElement;
-const nav = document.querySelector("body>nav") as HTMLElement;
+const navs = document.querySelectorAll("nav") as NodeListOf<HTMLElement>;
 const main = document.querySelector("main") as HTMLElement;
 
 const viewportWidth = window.innerWidth;
@@ -38,7 +38,19 @@ switch(activePage){
     buildProjects();
 }
 
+function hideNavs(){
+  navs.forEach(nav=>{
+    nav.classList.add(CssClasses.hidden) ;
+    nav.classList.remove(CssClasses.visible);
+  })
+}
 
+function displayNavs(){
+  navs.forEach(nav=>{
+    nav.classList.remove(CssClasses.hidden) ;
+    nav.classList.add(CssClasses.visible);
+  })
+}
 
 function onDetailsOpen(){
   if(this.open){
@@ -53,12 +65,16 @@ function onDetailsOpen(){
 
 function navHidder(){
   if(viewportHeight < 600 || viewportWidth < 1000){
-    nav.classList.remove(CssClasses.visible) ;
-    nav.classList.add(CssClasses.hidden);
+    navs.forEach(nav=>{
+      nav.classList.remove(CssClasses.visible) ;
+      nav.classList.add(CssClasses.hidden);
+    })
   
   }else{
-    nav.classList.remove(CssClasses.visible) ;
-    nav.classList.remove(CssClasses.hidden);
+    navs.forEach(nav=>{
+      nav.classList.remove(CssClasses.visible) ;
+      nav.classList.remove(CssClasses.hidden);
+    })
   }
 }
 
@@ -69,14 +85,12 @@ function init(){
   navHidder();
 
   burgerMenuButton?.addEventListener("click",() => {
-    if(nav.classList.contains(CssClasses.hidden)){
-      nav.classList.remove(CssClasses.hidden);
-      nav.classList.add(CssClasses.visible);
+
+    if(navs[0].classList.contains(CssClasses.hidden)){
+      displayNavs();
     } else{
-      nav.classList.remove(CssClasses.visible);
-      nav.classList.add(CssClasses.hidden);
+      hideNavs();
     } 
-  
   }
   );
 
@@ -116,6 +130,7 @@ function buildProjectNav(){
       let li = document.createElement("li");
       li.innerHTML = project.title;
       li.addEventListener("click", buildProjectHTML);
+      li.addEventListener("click", hideNavs);
       ul.appendChild(li);
     })
 

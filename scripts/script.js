@@ -35,9 +35,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var activePage = document.getElementsByTagName("main")[0].getAttribute("activePage");
-var projectsNav = document.querySelector("nav:nth-child(2)");
+var projectsNav = document.querySelector("body nav + nav");
 var burgerMenuButton = document.querySelector("body>div");
-var nav = document.querySelector("body>nav");
+var navs = document.querySelectorAll("nav");
 var main = document.querySelector("main");
 var viewportWidth = window.innerWidth;
 var viewportHeight = window.innerHeight;
@@ -54,6 +54,18 @@ switch (activePage) {
     case "Projects":
         buildProjects();
 }
+function hideNavs() {
+    navs.forEach(function (nav) {
+        nav.classList.add(CssClasses.hidden);
+        nav.classList.remove(CssClasses.visible);
+    });
+}
+function displayNavs() {
+    navs.forEach(function (nav) {
+        nav.classList.remove(CssClasses.hidden);
+        nav.classList.add(CssClasses.visible);
+    });
+}
 function onDetailsOpen() {
     var _this = this;
     if (this.open) {
@@ -67,12 +79,16 @@ function onDetailsOpen() {
 ;
 function navHidder() {
     if (viewportHeight < 600 || viewportWidth < 1000) {
-        nav.classList.remove(CssClasses.visible);
-        nav.classList.add(CssClasses.hidden);
+        navs.forEach(function (nav) {
+            nav.classList.remove(CssClasses.visible);
+            nav.classList.add(CssClasses.hidden);
+        });
     }
     else {
-        nav.classList.remove(CssClasses.visible);
-        nav.classList.remove(CssClasses.hidden);
+        navs.forEach(function (nav) {
+            nav.classList.remove(CssClasses.visible);
+            nav.classList.remove(CssClasses.hidden);
+        });
     }
 }
 function init() {
@@ -81,13 +97,11 @@ function init() {
     window.addEventListener('resize', navHidder);
     navHidder();
     burgerMenuButton === null || burgerMenuButton === void 0 ? void 0 : burgerMenuButton.addEventListener("click", function () {
-        if (nav.classList.contains(CssClasses.hidden)) {
-            nav.classList.remove(CssClasses.hidden);
-            nav.classList.add(CssClasses.visible);
+        if (navs[0].classList.contains(CssClasses.hidden)) {
+            displayNavs();
         }
         else {
-            nav.classList.remove(CssClasses.visible);
-            nav.classList.add(CssClasses.hidden);
+            hideNavs();
         }
     });
 }
@@ -117,6 +131,7 @@ function buildProjectNav() {
             var li = document.createElement("li");
             li.innerHTML = project.title;
             li.addEventListener("click", buildProjectHTML);
+            li.addEventListener("click", hideNavs);
             ul.appendChild(li);
         });
         details.appendChild(ul);
