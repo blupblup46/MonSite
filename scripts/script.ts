@@ -39,17 +39,20 @@ switch(activePage){
 }
 
 function hideNavs(){
-  navs.forEach(nav=>{
-    nav.classList.add(CssClasses.hidden) ;
-    nav.classList.remove(CssClasses.visible);
-  })
+  if(viewportHeight < 600 || viewportWidth < 1000)
+
+    navs.forEach(nav=>{
+      nav.classList.add(CssClasses.hidden) ;
+      nav.classList.remove(CssClasses.visible);
+    })
 }
 
 function displayNavs(){
-  navs.forEach(nav=>{
-    nav.classList.remove(CssClasses.hidden) ;
-    nav.classList.add(CssClasses.visible);
-  })
+  if(viewportHeight < 600 || viewportWidth < 1000)
+    navs.forEach(nav=>{
+      nav.classList.remove(CssClasses.hidden) ;
+      nav.classList.add(CssClasses.visible);
+    })
 }
 
 function onDetailsOpen(){
@@ -63,7 +66,7 @@ function onDetailsOpen(){
 };
 
 
-function navHidder(){
+function onResizeNavHidder(){
   if(viewportHeight < 600 || viewportWidth < 1000){
     navs.forEach(nav=>{
       nav.classList.remove(CssClasses.visible) ;
@@ -81,8 +84,8 @@ function navHidder(){
 function init(){
   document.getElementById(activePage)?.classList.add(CssClasses.underlined);
 
-  window.addEventListener('resize', navHidder);
-  navHidder();
+  window.addEventListener('resize', onResizeNavHidder);
+  onResizeNavHidder();
 
   burgerMenuButton?.addEventListener("click",() => {
 

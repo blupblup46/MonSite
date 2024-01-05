@@ -55,16 +55,18 @@ switch (activePage) {
         buildProjects();
 }
 function hideNavs() {
-    navs.forEach(function (nav) {
-        nav.classList.add(CssClasses.hidden);
-        nav.classList.remove(CssClasses.visible);
-    });
+    if (viewportHeight < 600 || viewportWidth < 1000)
+        navs.forEach(function (nav) {
+            nav.classList.add(CssClasses.hidden);
+            nav.classList.remove(CssClasses.visible);
+        });
 }
 function displayNavs() {
-    navs.forEach(function (nav) {
-        nav.classList.remove(CssClasses.hidden);
-        nav.classList.add(CssClasses.visible);
-    });
+    if (viewportHeight < 600 || viewportWidth < 1000)
+        navs.forEach(function (nav) {
+            nav.classList.remove(CssClasses.hidden);
+            nav.classList.add(CssClasses.visible);
+        });
 }
 function onDetailsOpen() {
     var _this = this;
@@ -77,7 +79,7 @@ function onDetailsOpen() {
     }
 }
 ;
-function navHidder() {
+function onResizeNavHidder() {
     if (viewportHeight < 600 || viewportWidth < 1000) {
         navs.forEach(function (nav) {
             nav.classList.remove(CssClasses.visible);
@@ -94,8 +96,8 @@ function navHidder() {
 function init() {
     var _a;
     (_a = document.getElementById(activePage)) === null || _a === void 0 ? void 0 : _a.classList.add(CssClasses.underlined);
-    window.addEventListener('resize', navHidder);
-    navHidder();
+    window.addEventListener('resize', onResizeNavHidder);
+    onResizeNavHidder();
     burgerMenuButton === null || burgerMenuButton === void 0 ? void 0 : burgerMenuButton.addEventListener("click", function () {
         if (navs[0].classList.contains(CssClasses.hidden)) {
             displayNavs();
