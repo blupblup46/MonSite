@@ -48,6 +48,7 @@ var CssClasses;
     CssClasses["isDisplayed"] = "isDisplayed";
     CssClasses["hidden"] = "hidden";
     CssClasses["visible"] = "visible";
+    CssClasses["displayFlex"] = "display-flex";
 })(CssClasses || (CssClasses = {}));
 init();
 switch (activePage) {
@@ -162,7 +163,6 @@ function buildProjectHTML(event, project) {
     }
     var projectSection = createElement("section");
     appendChildren(projectSection, [
-        createElement("h2", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.title),
         createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.context),
         createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.details),
         appendChildren(createElement("div"), [
@@ -175,8 +175,11 @@ function buildProjectHTML(event, project) {
         ]),
     ]);
     appendChildren(main, [
-        projectSection,
-        appendChildren(createElement("figure"), [createElement("img", null, clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.image)])
+        createElement("h2", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.title),
+        appendChildren(createElement("div", null, { "class": CssClasses.displayFlex }), [
+            projectSection,
+            appendChildren(createElement("figure"), [createElement("img", null, clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.image)])
+        ])
     ]);
 }
 function loadProjects() {

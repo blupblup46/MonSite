@@ -14,8 +14,8 @@ enum CssClasses  {
   underlined = "underlined",
   isDisplayed = "isDisplayed",
   hidden = "hidden",
-  visible = "visible"
-
+  visible = "visible",
+  displayFlex = "display-flex"
 }
 
 interface Project{
@@ -169,7 +169,6 @@ function buildProjectHTML(event, project: Project|null = null){
 
   let projectSection = createElement("section");
   appendChildren(projectSection, [
-    createElement("h2", clickedProject?.title),
     createElement("p", clickedProject?.context),
     createElement("p", clickedProject?.details),
     appendChildren(createElement("div"), [
@@ -184,8 +183,13 @@ function buildProjectHTML(event, project: Project|null = null){
   ]);
 
   appendChildren(main,[
-    projectSection,
-    appendChildren(createElement("figure"), [createElement("img", null, clickedProject?.image)])
+    createElement("h2", clickedProject?.title),
+    appendChildren(
+      createElement("div", null, {class:CssClasses.displayFlex}),[
+        projectSection,
+        appendChildren(createElement("figure"), [createElement("img", null, clickedProject?.image)])
+      ]
+    )
   ])
 
 }
@@ -197,7 +201,7 @@ async function loadProjects() : Promise<Map<string, Project[]>> {
 }
 
 
-function createElement(elementTag: string, innerHTML: string|null = null, attributes: Object | null = null){
+function createElement(elementTag: string, innerHTML: string|null = null, attributes: Object | null = null): HTMLElement{
   let element = document.createElement(elementTag);
 
   if(innerHTML != null){
@@ -212,7 +216,7 @@ function createElement(elementTag: string, innerHTML: string|null = null, attrib
   return element;
 }
 
-function appendChildren(element: HTMLElement, children: HTMLElement[]){
+function appendChildren(element: HTMLElement, children: HTMLElement[]): HTMLElement{
   children.forEach(child=>{
     element.appendChild(child);
   })

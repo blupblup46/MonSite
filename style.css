@@ -228,7 +228,7 @@ main[activePage="Intro"] article:last-child img:hover{
 
 main[activePage="Projects"]{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -240,6 +240,11 @@ main[activePage="Projects"] div{
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+main[activePage="Projects"] .display-flex{
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 /* EDUCATION */
@@ -323,9 +328,6 @@ main[activePage="Education"] img{
         display: none;
     }
 
-    main[activePage="Projects"]{
-        flex-direction: column-reverse;
-    }
 
     nav{
         position: fixed;
@@ -337,5 +339,8 @@ main[activePage="Education"] img{
         left:50%;
     }
 
+    main[activePage="Projects"] div.display-flex{
+        flex-direction: column-reverse;
+    }
 
 }
