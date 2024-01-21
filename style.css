@@ -29,7 +29,7 @@ body{
 p{
     font-family: PWix;
     line-height: 1.25em;
-    text-align: justify;
+    text-align: left;
     padding: 0em 2em;
 }
 
@@ -116,7 +116,7 @@ nav{
 
 body nav + nav {
     z-index: 1;
-    /* position: inherit; */
+    font-size: medium;
 }
 
 
