@@ -97,9 +97,18 @@ details:hover{
     cursor: pointer;
 }
 
+@keyframes slide{
+    from{
+        transform: translate(-1000px);
+
+    }
+    to{
+        transform: translate(0px);
+    }
+}
+
 nav{
     float: left;
-    /* left: 0px; */
     display: flex;
     align-items: center;
     justify-items: center;
@@ -112,6 +121,7 @@ nav{
     font-family: 'Courier New', Courier, monospace;
 
     background-color: var(--mainColor);
+
 }
 
 body nav + nav {
@@ -330,15 +340,15 @@ main[activePage="Education"] img{
     }
 
     p{
-        font-size: 1em;
+        font-size: 0.9em;
     }
 
     h1{
-        font-size: 1.75em;
+        font-size: 1.5em;
     }
 
     h2, h3{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
 
     body>div{
@@ -354,6 +364,8 @@ main[activePage="Education"] img{
         position: fixed;
         left:0px;
         width: 50%;
+        animation: slide 0.25s ;
+
     }
     
     body nav + nav {
@@ -366,6 +378,10 @@ main[activePage="Education"] img{
 
     main[activePage="Projects"] {
         flex-direction: column;
+    }
+
+    main[activePage="Projects"] img {
+        width:30vh;
     }
 
 }
