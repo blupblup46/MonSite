@@ -202,28 +202,15 @@ function buildProjectHTML(event, project: Project|null = null){
 
   ]);
 
-
-  let nextImage = (e: MouseEvent) => {
-    console.log("next")
-    if(clickedProject != undefined){
-      imageIndexToDisplay++;
-      imageIndexToDisplay = Math.min(imageIndexToDisplay, clickedProject.images.length - 1);
-    }
-  }
-
-  let previousImage = (e: MouseEvent) => {
-   
-  }
-
   let figureSelectorContainer = createElement("div", null, {class:"figures-container"});
   appendChildren(
     figureSelectorContainer,
-    [ createPreviousButton((e: MouseEvent)=>changeImage(e, ImageViewer.previous, clickedProject.images)),
+    [ createImgAsButton((e: MouseEvent)=>changeImage(e, ImageViewer.previous, clickedProject.images), {class:"image-button"}),
       appendChildren(
         createElement("figure"),
         [createElement("img", null, {src:clickedProject.images[imageIndexToDisplay].src})]
       ),
-      createNextButton((e: MouseEvent)=>changeImage(e, ImageViewer.next, clickedProject.images))
+      createImgAsButton((e: MouseEvent)=>changeImage(e, ImageViewer.next, clickedProject.images), {class:"image-button previousButton"})
     ]
   )
 
@@ -247,10 +234,6 @@ function changeImage(e: MouseEvent, view: ImageViewer, images: Image[]){
   }else if(imageIndexToDisplay > images.length -1){
     imageIndexToDisplay = 0;
   }
-
-  console.log(images)
-  console.log(imageIndexToDisplay)
-  console.log(images[imageIndexToDisplay].src)
 
   let figure = (e.target as HTMLElement).parentElement?.querySelector("figure") as HTMLElement;
 
@@ -290,18 +273,18 @@ function appendChildren(element: HTMLElement, children: HTMLElement[]): HTMLElem
   return element;
 }
 
-function createPreviousButton(callBack){
-  let button =  createElement("img",null, {src:"/images/chevron.png", class:"image-button"});
+
+function createImgAsButton(callBack, attributes: Object | null = null,  src: string = "/images/chevron.png"){
+
+  let button =  createElement("img",null, {src})
+
+  if(attributes != null){
+    Object.keys(attributes).forEach((key) =>{
+      button.setAttribute(key, attributes[key]);
+    });
+  }
 
   button.onclick = callBack;
 
-  return button
-}
-
-function createNextButton(callBack){
-  let button =  createElement("img",null, {src:"/images/chevron.png", class:"image-button previousButton"})
-
-  button.onclick = callBack;
-
-  return button
+  return button;
 }

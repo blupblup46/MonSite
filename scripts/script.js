@@ -192,19 +192,10 @@ function buildProjectHTML(event, project) {
             createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.learned)
         ]),
     ]);
-    var nextImage = function (e) {
-        console.log("next");
-        if (clickedProject != undefined) {
-            imageIndexToDisplay++;
-            imageIndexToDisplay = Math.min(imageIndexToDisplay, clickedProject.images.length - 1);
-        }
-    };
-    var previousImage = function (e) {
-    };
     var figureSelectorContainer = createElement("div", null, { "class": "figures-container" });
-    appendChildren(figureSelectorContainer, [createPreviousButton(function (e) { return changeImage(e, ImageViewer.previous, clickedProject.images); }),
+    appendChildren(figureSelectorContainer, [createImgAsButton(function (e) { return changeImage(e, ImageViewer.previous, clickedProject.images); }, { "class": "image-button" }),
         appendChildren(createElement("figure"), [createElement("img", null, { src: clickedProject.images[imageIndexToDisplay].src })]),
-        createNextButton(function (e) { return changeImage(e, ImageViewer.next, clickedProject.images); })
+        createImgAsButton(function (e) { return changeImage(e, ImageViewer.next, clickedProject.images); }, { "class": "image-button previousButton" })
     ]);
     appendChildren(main, [
         createElement("h2", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.title),
@@ -223,9 +214,6 @@ function changeImage(e, view, images) {
     else if (imageIndexToDisplay > images.length - 1) {
         imageIndexToDisplay = 0;
     }
-    console.log(images);
-    console.log(imageIndexToDisplay);
-    console.log(images[imageIndexToDisplay].src);
     var figure = (_a = e.target.parentElement) === null || _a === void 0 ? void 0 : _a.querySelector("figure");
     var img = figure.querySelector("img");
     figure.removeChild(img);
@@ -260,13 +248,15 @@ function appendChildren(element, children) {
     });
     return element;
 }
-function createPreviousButton(callBack) {
-    var button = createElement("img", null, { src: "/images/chevron.png", "class": "image-button" });
-    button.onclick = callBack;
-    return button;
-}
-function createNextButton(callBack) {
-    var button = createElement("img", null, { src: "/images/chevron.png", "class": "image-button previousButton" });
+function createImgAsButton(callBack, attributes, src) {
+    if (attributes === void 0) { attributes = null; }
+    if (src === void 0) { src = "/images/chevron.png"; }
+    var button = createElement("img", null, { src: src });
+    if (attributes != null) {
+        Object.keys(attributes).forEach(function (key) {
+            button.setAttribute(key, attributes[key]);
+        });
+    }
     button.onclick = callBack;
     return button;
 }
