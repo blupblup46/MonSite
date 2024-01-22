@@ -10,12 +10,18 @@ const viewportHeight = window.innerHeight;
 
 let projectList : Map<string, Map<string, Project>> = new Map();
 
+let imageIndexToDisplay = 0;
+
 enum CssClasses  {
   underlined = "underlined",
   isDisplayed = "isDisplayed",
   hidden = "hidden",
   visible = "visible",
-  displayFlex = "display-flex"
+}
+
+enum ImageViewer{
+  previous = -1,
+  next = +1
 }
 
 interface Project{
@@ -24,11 +30,13 @@ interface Project{
   readonly details: string;
   readonly tools: string;
   readonly learned: string;
-  readonly image : {
-    readonly src: string;
-    readonly alt: string;
-    readonly title: string;
-  }
+  readonly images : Image[]
+}
+
+interface Image{
+  readonly src: string;
+  readonly alt: string;
+  readonly title: string; 
 }
 
 init();
@@ -109,7 +117,6 @@ function buildProjects(){
       let projectsMap : Map<string, Project> = new Map();
 
       projects[context].forEach((p : Project)=>{
-        console.log(p)
         projectsMap.set(p.title, p);
       });
 
@@ -148,11 +155,11 @@ function buildProjectNav(){
   document.querySelectorAll("details li")[0].classList.add(CssClasses.underlined);
 }
 
-
 function buildProjectHTML(event, project: Project|null = null){
 
+  imageIndexToDisplay = 0;
   main.innerHTML ="";
-  let clickedProject: Project|undefined|null ;
+  let clickedProject: Project = projectList.values().next().value.values().next().value;
   if(event != null){
 
     document.querySelectorAll("details li").forEach(s=>s.removeAttribute("class"));
@@ -162,9 +169,22 @@ function buildProjectHTML(event, project: Project|null = null){
 
     
     let projectClickContext: string = event.target.parentNode.previousElementSibling.innerText;
-    clickedProject= projectList.get(projectClickContext)?.get(event.target.innerText);
+    let projects = projectList.get(projectClickContext);
+
+    if(projects!= undefined){
+      let project = projects.get(event.target.innerText) 
+      if(project != undefined){
+        clickedProject= project;
+      }else{
+        throw new Error('No project given');
+      }
+    }
   }else{
-    clickedProject = project;
+    if(project != null){
+      clickedProject = project;
+    }else{
+      throw new Error('No project given');
+    }
   }
 
   let projectSection = createElement("section");
@@ -182,16 +202,63 @@ function buildProjectHTML(event, project: Project|null = null){
 
   ]);
 
+
+  let nextImage = (e: MouseEvent) => {
+    console.log("next")
+    if(clickedProject != undefined){
+      imageIndexToDisplay++;
+      imageIndexToDisplay = Math.min(imageIndexToDisplay, clickedProject.images.length - 1);
+    }
+  }
+
+  let previousImage = (e: MouseEvent) => {
+   
+  }
+
+  let figureSelectorContainer = createElement("div", null, {class:"figures-container"});
+  appendChildren(
+    figureSelectorContainer,
+    [ createPreviousButton((e: MouseEvent)=>changeImage(e, ImageViewer.previous, clickedProject.images)),
+      appendChildren(
+        createElement("figure"),
+        [createElement("img", null, {src:clickedProject.images[imageIndexToDisplay].src})]
+      ),
+      createNextButton((e: MouseEvent)=>changeImage(e, ImageViewer.next, clickedProject.images))
+    ]
+  )
+
   appendChildren(main,[
     createElement("h2", clickedProject?.title),
     appendChildren(
-      createElement("div", null, {class:CssClasses.displayFlex}),[
+      createElement("div", null, {class:"project-container"}),[
         projectSection,
-        appendChildren(createElement("figure"), [createElement("img", null, clickedProject?.image)])
+        figureSelectorContainer
       ]
     )
   ])
 
+}
+
+function changeImage(e: MouseEvent, view: ImageViewer, images: Image[]){
+  imageIndexToDisplay += view;
+
+  if(imageIndexToDisplay < 0){
+    imageIndexToDisplay = images.length-1
+  }else if(imageIndexToDisplay > images.length -1){
+    imageIndexToDisplay = 0;
+  }
+
+  console.log(images)
+  console.log(imageIndexToDisplay)
+  console.log(images[imageIndexToDisplay].src)
+
+  let figure = (e.target as HTMLElement).parentElement?.querySelector("figure") as HTMLElement;
+
+  let img = figure.querySelector("img") as HTMLImageElement;
+
+  figure.removeChild(img);
+  img.src = images[imageIndexToDisplay].src;
+  figure.appendChild(img);
 }
 
 
@@ -221,4 +288,20 @@ function appendChildren(element: HTMLElement, children: HTMLElement[]): HTMLElem
     element.appendChild(child);
   })
   return element;
+}
+
+function createPreviousButton(callBack){
+  let button =  createElement("img",null, {src:"/images/chevron.png", class:"image-button"});
+
+  button.onclick = callBack;
+
+  return button
+}
+
+function createNextButton(callBack){
+  let button =  createElement("img",null, {src:"/images/chevron.png", class:"image-button previousButton"})
+
+  button.onclick = callBack;
+
+  return button
 }

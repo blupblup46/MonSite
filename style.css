@@ -167,6 +167,7 @@ figure{
 }
 
 
+
 /* SECOND NAV */
 
 body nav + nav{
@@ -242,9 +243,29 @@ main[activePage="Projects"] div{
     flex-direction: column;
 }
 
-main[activePage="Projects"] .display-flex{
+main[activePage="Projects"] .project-container{
     display: flex;
     flex-direction: row-reverse;
+}
+
+
+main[activePage="Projects"] .previousButton{
+    transform: rotate(180deg);
+}
+
+main[activePage="Projects"] .image-button{
+    height: 50px;
+    width: 50px;
+    border: none;
+}
+
+main[activePage="Projects"] .figures-container{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+main[activePage="Projects"] .image-button:hover{
+    cursor: pointer;
 }
 
 /* EDUCATION */
@@ -339,8 +360,12 @@ main[activePage="Education"] img{
         left:50%;
     }
 
-    main[activePage="Projects"] div.display-flex{
+    main[activePage="Projects"] div.project-container{
         flex-direction: column-reverse;
+    }
+
+    main[activePage="Projects"] {
+        flex-direction: column;
     }
 
 }

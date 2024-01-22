@@ -42,14 +42,19 @@ var main = document.querySelector("main");
 var viewportWidth = window.innerWidth;
 var viewportHeight = window.innerHeight;
 var projectList = new Map();
+var imageIndexToDisplay = 0;
 var CssClasses;
 (function (CssClasses) {
     CssClasses["underlined"] = "underlined";
     CssClasses["isDisplayed"] = "isDisplayed";
     CssClasses["hidden"] = "hidden";
     CssClasses["visible"] = "visible";
-    CssClasses["displayFlex"] = "display-flex";
 })(CssClasses || (CssClasses = {}));
+var ImageViewer;
+(function (ImageViewer) {
+    ImageViewer[ImageViewer["previous"] = -1] = "previous";
+    ImageViewer[ImageViewer["next"] = 1] = "next";
+})(ImageViewer || (ImageViewer = {}));
 init();
 switch (activePage) {
     case "Projects":
@@ -114,7 +119,6 @@ function buildProjects() {
         Object.keys(projects).forEach(function (context) {
             var projectsMap = new Map();
             projects[context].forEach(function (p) {
-                console.log(p);
                 projectsMap.set(p.title, p);
             });
             projectList.set(context, projectsMap);
@@ -146,20 +150,34 @@ function buildProjectNav() {
     document.querySelectorAll("details li")[0].classList.add(CssClasses.underlined);
 }
 function buildProjectHTML(event, project) {
-    var _a;
     if (project === void 0) { project = null; }
+    imageIndexToDisplay = 0;
     main.innerHTML = "";
-    var clickedProject;
+    var clickedProject = projectList.values().next().value.values().next().value;
     if (event != null) {
         document.querySelectorAll("details li").forEach(function (s) { return s.removeAttribute("class"); });
         event.target.classList.add(CssClasses.underlined);
         document.querySelectorAll("summary").forEach(function (s) { return s.removeAttribute("class"); });
         event.target.parentNode.previousElementSibling.classList.add(CssClasses.underlined);
         var projectClickContext = event.target.parentNode.previousElementSibling.innerText;
-        clickedProject = (_a = projectList.get(projectClickContext)) === null || _a === void 0 ? void 0 : _a.get(event.target.innerText);
+        var projects = projectList.get(projectClickContext);
+        if (projects != undefined) {
+            var project_1 = projects.get(event.target.innerText);
+            if (project_1 != undefined) {
+                clickedProject = project_1;
+            }
+            else {
+                throw new Error('No project given');
+            }
+        }
     }
     else {
-        clickedProject = project;
+        if (project != null) {
+            clickedProject = project;
+        }
+        else {
+            throw new Error('No project given');
+        }
     }
     var projectSection = createElement("section");
     appendChildren(projectSection, [
@@ -174,13 +192,45 @@ function buildProjectHTML(event, project) {
             createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.learned)
         ]),
     ]);
+    var nextImage = function (e) {
+        console.log("next");
+        if (clickedProject != undefined) {
+            imageIndexToDisplay++;
+            imageIndexToDisplay = Math.min(imageIndexToDisplay, clickedProject.images.length - 1);
+        }
+    };
+    var previousImage = function (e) {
+    };
+    var figureSelectorContainer = createElement("div", null, { "class": "figures-container" });
+    appendChildren(figureSelectorContainer, [createPreviousButton(function (e) { return changeImage(e, ImageViewer.previous, clickedProject.images); }),
+        appendChildren(createElement("figure"), [createElement("img", null, { src: clickedProject.images[imageIndexToDisplay].src })]),
+        createNextButton(function (e) { return changeImage(e, ImageViewer.next, clickedProject.images); })
+    ]);
     appendChildren(main, [
         createElement("h2", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.title),
-        appendChildren(createElement("div", null, { "class": CssClasses.displayFlex }), [
+        appendChildren(createElement("div", null, { "class": "project-container" }), [
             projectSection,
-            appendChildren(createElement("figure"), [createElement("img", null, clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.image)])
+            figureSelectorContainer
         ])
     ]);
+}
+function changeImage(e, view, images) {
+    var _a;
+    imageIndexToDisplay += view;
+    if (imageIndexToDisplay < 0) {
+        imageIndexToDisplay = images.length - 1;
+    }
+    else if (imageIndexToDisplay > images.length - 1) {
+        imageIndexToDisplay = 0;
+    }
+    console.log(images);
+    console.log(imageIndexToDisplay);
+    console.log(images[imageIndexToDisplay].src);
+    var figure = (_a = e.target.parentElement) === null || _a === void 0 ? void 0 : _a.querySelector("figure");
+    var img = figure.querySelector("img");
+    figure.removeChild(img);
+    img.src = images[imageIndexToDisplay].src;
+    figure.appendChild(img);
 }
 function loadProjects() {
     return __awaiter(this, void 0, void 0, function () {
@@ -209,4 +259,14 @@ function appendChildren(element, children) {
         element.appendChild(child);
     });
     return element;
+}
+function createPreviousButton(callBack) {
+    var button = createElement("img", null, { src: "/images/chevron.png", "class": "image-button" });
+    button.onclick = callBack;
+    return button;
+}
+function createNextButton(callBack) {
+    var button = createElement("img", null, { src: "/images/chevron.png", "class": "image-button previousButton" });
+    button.onclick = callBack;
+    return button;
 }
