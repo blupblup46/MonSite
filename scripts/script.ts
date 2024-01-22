@@ -202,13 +202,14 @@ function buildProjectHTML(event, project: Project|null = null){
 
   ]);
 
+  let image = clickedProject.images[imageIndexToDisplay]
   let figureSelectorContainer = createElement("div", null, {class:"figures-container"});
   appendChildren(
     figureSelectorContainer,
     [ createImgAsButton((e: MouseEvent)=>changeImage(e, ImageViewer.previous, clickedProject.images), {class:"image-button"}),
       appendChildren(
         createElement("figure"),
-        [createElement("img", null, {src:clickedProject.images[imageIndexToDisplay].src})]
+        [createElement("img", null, {src:image.src, alt:image.alt, title:image.title})]
       ),
       createImgAsButton((e: MouseEvent)=>changeImage(e, ImageViewer.next, clickedProject.images), {class:"image-button previousButton"})
     ]
@@ -240,7 +241,11 @@ function changeImage(e: MouseEvent, view: ImageViewer, images: Image[]){
   let img = figure.querySelector("img") as HTMLImageElement;
 
   figure.removeChild(img);
+
   img.src = images[imageIndexToDisplay].src;
+  img.alt = images[imageIndexToDisplay].alt;
+  img.title = images[imageIndexToDisplay].title;
+  
   figure.appendChild(img);
 }
 

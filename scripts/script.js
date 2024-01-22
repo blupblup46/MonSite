@@ -192,9 +192,10 @@ function buildProjectHTML(event, project) {
             createElement("p", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.learned)
         ]),
     ]);
+    var image = clickedProject.images[imageIndexToDisplay];
     var figureSelectorContainer = createElement("div", null, { "class": "figures-container" });
     appendChildren(figureSelectorContainer, [createImgAsButton(function (e) { return changeImage(e, ImageViewer.previous, clickedProject.images); }, { "class": "image-button" }),
-        appendChildren(createElement("figure"), [createElement("img", null, { src: clickedProject.images[imageIndexToDisplay].src })]),
+        appendChildren(createElement("figure"), [createElement("img", null, { src: image.src, alt: image.alt, title: image.title })]),
         createImgAsButton(function (e) { return changeImage(e, ImageViewer.next, clickedProject.images); }, { "class": "image-button previousButton" })
     ]);
     appendChildren(main, [
@@ -218,6 +219,8 @@ function changeImage(e, view, images) {
     var img = figure.querySelector("img");
     figure.removeChild(img);
     img.src = images[imageIndexToDisplay].src;
+    img.alt = images[imageIndexToDisplay].alt;
+    img.title = images[imageIndexToDisplay].title;
     figure.appendChild(img);
 }
 function loadProjects() {
