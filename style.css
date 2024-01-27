@@ -274,6 +274,10 @@ main[activePage="Projects"] .figures-container{
     flex-direction: row-reverse;
 }
 
+main[activePage="Projects"] .figures-container figure{
+    margin: 0px;
+}
+
 main[activePage="Projects"] .image-button:hover{
     cursor: pointer;
 }
@@ -354,11 +358,6 @@ main[activePage="Education"] img{
     body>div{
         display: block;
     }
-    
-    main[activePage="Education"] figure{
-        display: none;
-    }
-
 
     nav{
         position: fixed;
