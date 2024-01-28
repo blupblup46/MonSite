@@ -1,6 +1,7 @@
 {
   "name": "blupblup46.github.io",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "rm -rf dist .parcel-cache && parcel build scripts/script.ts && parcel ./*.html",

@@ -16,6 +16,9 @@
     --white: #efefef;
   }
 
+#Experiences, #Skills{
+    display: none;
+}
 
 body{
     z-index: 0;
@@ -24,7 +27,6 @@ body{
     font-family: PWix;
     text-justify: auto;
 }
-
 
 p{
     font-family: PWix;
@@ -66,7 +68,7 @@ ul{
     margin: 0em;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 50%;
     margin: 1.5em;
 
