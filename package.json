@@ -1,5 +1,27 @@
 {
+  "name": "blupblup46.github.io",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rm -rf dist .parcel-cache && parcel build scripts/script.ts && parcel ./*.html",
+    "predeploy": "rm -rf dist && parcel build ./*.html --public-url 'https://blupblup46.github.io'",
+    "deploy": "gh-pages -d dist"
+  },
+  "@parcel/resolver-default": {
+    "packageExports": true
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^4.4.1",
+    "gh-pages": "^6.1.1"
+  },
   "devDependencies": {
+    "@parcel/packager-ts": "^2.11.0",
+    "@parcel/transformer-typescript-types": "^2.11.0",
+    "chart.js": "^4.4.1",
+    "parcel": "^2.11.0",
     "typescript": "^5.3.3"
-  }
+  },
+  "description": ""
 }

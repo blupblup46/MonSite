@@ -1,4 +1,32 @@
 // import { ExperiencesLoader } from "./Experiences";
+import Chart from '../node_modules/chart.js/auto'
+
+console.log("ui")
+const data = [
+  { year: 2010, count: 10 },
+  { year: 2011, count: 20 },
+  { year: 2012, count: 15 },
+  { year: 2013, count: 25 },
+  { year: 2014, count: 22 },
+  { year: 2015, count: 30 },
+  { year: 2016, count: 28 },
+];
+
+new Chart(
+  document.getElementById('acquisitions') as HTMLCanvasElement,
+  {
+    type: 'bar',
+    data: {
+      labels: data.map(row => row.year),
+      datasets: [
+        {
+          label: 'Acquisitions by year',
+          data: data.map(row => row.count)
+        }
+      ]
+    }
+  }
+);
 
 const activePage = document.getElementsByTagName("main")[0].getAttribute("activePage") as string;
 const projectsNav = document.querySelector("body nav + nav") as HTMLElement;
@@ -291,3 +319,5 @@ function createImgAsButton(callBack: ((this: GlobalEventHandlers, ev: MouseEvent
 
   return button;
 }
+
+
