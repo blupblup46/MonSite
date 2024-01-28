@@ -1,32 +1,4 @@
 // import { ExperiencesLoader } from "./Experiences";
-import Chart from '../node_modules/chart.js/auto'
-
-console.log("ui")
-const data = [
-  { year: 2010, count: 10 },
-  { year: 2011, count: 20 },
-  { year: 2012, count: 15 },
-  { year: 2013, count: 25 },
-  { year: 2014, count: 22 },
-  { year: 2015, count: 30 },
-  { year: 2016, count: 28 },
-];
-
-new Chart(
-  document.getElementById('acquisitions') as HTMLCanvasElement,
-  {
-    type: 'bar',
-    data: {
-      labels: data.map(row => row.year),
-      datasets: [
-        {
-          label: 'Acquisitions by year',
-          data: data.map(row => row.count)
-        }
-      ]
-    }
-  }
-);
 
 const activePage = document.getElementsByTagName("main")[0].getAttribute("activePage") as string;
 const projectsNav = document.querySelector("body nav + nav") as HTMLElement;
@@ -70,6 +42,7 @@ interface Image {
 }
 
 init();
+hideNavs();
 
 switch (activePage) {
   case "Projects":
@@ -77,6 +50,8 @@ switch (activePage) {
     break;
   case "Experiences":
     // new ExperiencesLoader();
+  default:
+    break;
 }
 
 function hideNavs() {
@@ -108,18 +83,18 @@ function onDetailsOpen(details: HTMLDetailsElement) {
 
 
 function onResizeNavHidder() {
-  if (viewportHeight < 600 || viewportWidth < 1000) {
-    navs.forEach(nav => {
-      nav.classList.remove(CssClasses.visible);
-      nav.classList.add(CssClasses.hidden);
-    })
+  // if (viewportHeight < 600 || viewportWidth < 1000) {
+  //   navs.forEach(nav => {
+  //     nav.classList.remove(CssClasses.visible);
+  //     nav.classList.add(CssClasses.hidden);
+  //   })
 
-  } else {
-    navs.forEach(nav => {
-      nav.classList.remove(CssClasses.visible);
-      nav.classList.remove(CssClasses.hidden);
-    })
-  }
+  // } else {
+  //   navs.forEach(nav => {
+  //     nav.classList.remove(CssClasses.visible);
+  //     nav.classList.remove(CssClasses.hidden);
+  //   })
+  // }
 }
 
 function init() {
@@ -143,6 +118,7 @@ function init() {
 
 function buildProjects() {
 
+
   fetch("/scripts/project.json")
     .then(response => response.json())
     .then((_projects) => {
@@ -162,6 +138,8 @@ function buildProjects() {
 }
 
 function buildProjectNav() {
+
+
   projectList.forEach((projects, context) => {
     let details = document.createElement("details");
     details.addEventListener("toggle", () => onDetailsOpen(details));
@@ -188,7 +166,7 @@ function buildProjectNav() {
 }
 
 function buildProjectHTML(elementsToUnderline: [HTMLLIElement, HTMLElement]) {
-  console.log(elementsToUnderline)
+
 
   imageIndexToDisplay = 0;
   main.innerHTML = "";
@@ -200,12 +178,6 @@ function buildProjectHTML(elementsToUnderline: [HTMLLIElement, HTMLElement]) {
   let projectClickContext: string = elementsToUnderline[1].innerHTML;
   let projects = projectList.get(projectClickContext);
   let clickedProject = projects?.get(elementsToUnderline[0].innerHTML);
-  console.log(clickedProject)
-  console.log(elementsToUnderline[1].innerText)
-  console.log(elementsToUnderline[0].innerText)
-
-  console.log(projectList)
-
 
   let projectSection = createElement("section");
   appendChildren(projectSection, [
@@ -252,6 +224,8 @@ function buildProjectHTML(elementsToUnderline: [HTMLLIElement, HTMLElement]) {
 }
 
 function changeImage(e: MouseEvent, view: ImageViewer, images: Image[]|null|undefined) {
+
+
   imageIndexToDisplay += view;
 
   if(images != undefined){
@@ -277,12 +251,16 @@ function changeImage(e: MouseEvent, view: ImageViewer, images: Image[]|null|unde
 
 
 async function loadProjects(): Promise<Map<string, Project[]>> {
+
+
   return fetch("/scripts/project.json")
     .then(response => response.json());
 }
 
 
 function createElement(elementTag: string, innerHTML: string | null = null, attributes: Record<string, string> | null = null): HTMLElement {
+
+
   let element = document.createElement(elementTag);
 
   if (innerHTML != null) {
@@ -298,6 +276,8 @@ function createElement(elementTag: string, innerHTML: string | null = null, attr
 }
 
 function appendChildren(element: HTMLElement, children: HTMLElement[]): HTMLElement {
+
+
   children.forEach(child => {
     element.appendChild(child);
   })
@@ -306,6 +286,7 @@ function appendChildren(element: HTMLElement, children: HTMLElement[]): HTMLElem
 
 
 function createImgAsButton(callBack: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null, attributes: Record<string, string> | null = null, src: string = "/images/chevron.png") {
+
 
   let button = createElement("img", null, { src })
 
