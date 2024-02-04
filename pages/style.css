@@ -16,8 +16,22 @@
     --white: #efefef;
   }
 
-#Experiences, #Skills{
+#Skills{
     display: none;
+}
+
+.previousButton{
+    transform: rotate(180deg);
+}
+
+.image-button{
+    height: 50px;
+    width: 50px;
+    border: none;
+}
+
+.image-button:hover{
+    cursor: pointer;
 }
 
 body{
@@ -84,7 +98,6 @@ ul{
 
 .visible{
     display: flex;
-    width: 50%;
     z-index: 1000;
 }
 
@@ -192,6 +205,10 @@ body nav + nav{
     
 }
 
+body nav + nav ul{
+    height: auto;
+}
+
 body nav + nav details{
     margin: 1em;
 }
@@ -218,19 +235,19 @@ main[activePage="Intro"] article{
 }
 
 main[activePage="Intro"] article>figure img{
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
 }
 
 main[activePage="Intro"] article:last-child{
     margin-top: 5%;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 
 main[activePage="Intro"] article:last-child img{
-    height: 10vh;
-    margin: 1em;
+    max-height: 5em;
 }
 
 main[activePage="Intro"] article:last-child img:hover{
@@ -245,7 +262,7 @@ main[activePage="Projects"]{
     align-items: center;
 }
 
-main[activePage="Projects"] img{
+main[activePage="Projects"] div figure img{
     width: 40vh;
 }
 
@@ -261,16 +278,6 @@ main[activePage="Projects"] .project-container{
 }
 
 
-main[activePage="Projects"] .previousButton{
-    transform: rotate(180deg);
-}
-
-main[activePage="Projects"] .image-button{
-    height: 50px;
-    width: 50px;
-    border: none;
-}
-
 main[activePage="Projects"] .figures-container{
     display: flex;
     flex-direction: row-reverse;
@@ -280,9 +287,6 @@ main[activePage="Projects"] .figures-container figure{
     margin: 0px;
 }
 
-main[activePage="Projects"] .image-button:hover{
-    cursor: pointer;
-}
 
 /* EDUCATION */
 
@@ -304,6 +308,10 @@ main[activePage="Education"] section{
     width: 70%;
 }
 
+main[activePage="Education"] section figure {
+   margin: 0;
+   padding: 0;
+}
 
 main[activePage="Education"] section > div{
     display: flex;
@@ -323,23 +331,96 @@ main[activePage="Education"] img{
     max-width: 100%;
     height: auto;    
     display: block;  
-    margin: auto; 
+    margin: 0;
+    padding: 0; 
+}
+
+/* Experiences */
+
+main[activePage="Experiences"] p{
+    padding: 0;
+    margin: 0;
+}
+
+main[activePage="Experiences"] h1{
+    padding: 0;
+    margin: 0;
+}
+
+main[activePage="Experiences"] article{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    padding: 0 5em;
+}
+
+main[activePage="Experiences"] section:first-of-type{
+    display: flex;
+    flex-direction: row;
+}
+
+main[activePage="Experiences"] section:first-of-type section{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+main[activePage="Experiences"] div{
+    padding-bottom: 1em;
+}
+
+main[activePage="Experiences"] .description{
+    width: 100%;
 }
 
 
-@media (height< 600px) , (width< 1000px){
-    main[activePage="Intro"] article:last-child{
-        display:none;
-    }
+@media (width < 1300px){
+
+  
 
     main[activePage="Intro"], main[activePage="Intro"] article{
         flex-direction: column;
     }
 
-    main[activePage="Intro"] article img{
-        width: 70%;
+    main[activePage="Intro"] article:last-child{
+        flex-direction: row;
+
     }
 
+    main[activePage="Intro"] img{
+        width: 70px;
+    }
+
+    main[activePage="Intro"] article > figure img{
+        width: 80%;
+    }
+
+
+    main[activePage="Projects"] div.project-container{
+        flex-direction: column-reverse;
+    }
+
+    main[activePage="Projects"] {
+        flex-direction: column;
+    }
+
+    main[activePage="Projects"] div figure img {
+        width:30vh;
+    }
+
+    main[activePage="Experiences"] section:first-of-type{
+        display: flex;
+        flex-direction: column;
+    }
+
+    main[activePage="Experiences"] article{
+        padding: 10px;
+    }
+}
+
+@media (width < 750px){
+  
 
     body main{
        margin-top: 1em !important;
@@ -373,16 +454,5 @@ main[activePage="Education"] img{
         left:50%;
     }
 
-    main[activePage="Projects"] div.project-container{
-        flex-direction: column-reverse;
-    }
-
-    main[activePage="Projects"] {
-        flex-direction: column;
-    }
-
-    main[activePage="Projects"] img {
-        width:30vh;
-    }
-
+   
 }
