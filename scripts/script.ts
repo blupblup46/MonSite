@@ -1,5 +1,9 @@
-// import { ExperiencesLoader } from "./Experiences";
+import { appendChildren, changeImage, createElement, createImgAsButton } from "./DOM.js";
+import { ExperiencesLoader } from "./Experiences.js";
+import type {Image, Project } from './utils.js';
+import {CssClasses, Viewer } from './utils.js';
 
+const viewportWidthLimit = 750;
 const activePage = document.getElementsByTagName("main")[0].getAttribute("activePage") as string;
 const projectsNav = document.querySelector("body nav + nav") as HTMLElement;
 
@@ -7,39 +11,11 @@ const burgerMenuButton = document.querySelector("body>div") as HTMLElement;
 const navs = document.querySelectorAll("nav") as NodeListOf<HTMLElement>;
 const main = document.querySelector("main") as HTMLElement;
 
-const viewportWidth = window.innerWidth;
-const viewportHeight = window.innerHeight;
 
 let projectList: Map<string, Map<string, Project>> = new Map();
 
 let imageIndexToDisplay = 0;
 
-enum CssClasses {
-  underlined = "underlined",
-  isDisplayed = "isDisplayed",
-  hidden = "hidden",
-  visible = "visible",
-}
-
-enum ImageViewer {
-  previous = -1,
-  next = +1
-}
-
-interface Project {
-  readonly title: string;
-  readonly context: string;
-  readonly details: string;
-  readonly tools: string;
-  readonly learned: string;
-  readonly images: Image[]
-}
-
-interface Image {
-  readonly src: string;
-  readonly alt: string;
-  readonly title: string;
-}
 
 init();
 hideNavs();
@@ -49,13 +25,13 @@ switch (activePage) {
     buildProjects();
     break;
   case "Experiences":
-    // new ExperiencesLoader();
+    new ExperiencesLoader();
   default:
     break;
 }
 
 function hideNavs() {
-  if (viewportHeight < 600 || viewportWidth < 1000)
+  if (window.innerWidth < viewportWidthLimit)
 
     navs.forEach(nav => {
       nav.classList.add(CssClasses.hidden);
@@ -64,7 +40,7 @@ function hideNavs() {
 }
 
 function displayNavs() {
-  if (viewportHeight < 600 || viewportWidth < 1000)
+  if (window.innerWidth < viewportWidthLimit)
     navs.forEach(nav => {
       nav.classList.remove(CssClasses.hidden);
       nav.classList.add(CssClasses.visible);
@@ -83,18 +59,18 @@ function onDetailsOpen(details: HTMLDetailsElement) {
 
 
 function onResizeNavHidder() {
-  // if (viewportHeight < 600 || viewportWidth < 1000) {
-  //   navs.forEach(nav => {
-  //     nav.classList.remove(CssClasses.visible);
-  //     nav.classList.add(CssClasses.hidden);
-  //   })
+  if (window.innerWidth < viewportWidthLimit) {
+    navs.forEach(nav => {
+      nav.classList.remove(CssClasses.visible);
+      nav.classList.add(CssClasses.hidden);
+    })
 
-  // } else {
-  //   navs.forEach(nav => {
-  //     nav.classList.remove(CssClasses.visible);
-  //     nav.classList.remove(CssClasses.hidden);
-  //   })
-  // }
+  } else {
+    navs.forEach(nav => {
+      nav.classList.add(CssClasses.visible);
+      nav.classList.remove(CssClasses.hidden);
+    })
+  }
 }
 
 function init() {
@@ -119,7 +95,7 @@ function init() {
 function buildProjects() {
 
 
-  fetch("/scripts/project.json")
+  fetch("/ressources/project.json")
     .then(response => response.json())
     .then((_projects) => {
 
@@ -200,12 +176,12 @@ function buildProjectHTML(elementsToUnderline: [HTMLLIElement, HTMLElement]) {
   if(image != undefined){
     appendChildren(
       figureSelectorContainer,
-      [createImgAsButton((e: MouseEvent) => changeImage(e, ImageViewer.previous, clickedProject?.images), { class: "image-button" }),
+      [createImgAsButton((e: MouseEvent) => changeImage(e, Viewer.previous, clickedProject?.images), { class: "image-button" }),
       appendChildren(
         createElement("figure"),
         [createElement("img", null, { src: image.src, alt: image.alt, title: image.title })]
       ),
-      createImgAsButton((e: MouseEvent) => changeImage(e, ImageViewer.next, clickedProject?.images), { class: "image-button previousButton" })
+      createImgAsButton((e: MouseEvent) => changeImage(e, Viewer.next, clickedProject?.images), { class: "image-button previousButton" })
       ]
     )
   }
@@ -222,83 +198,3 @@ function buildProjectHTML(elementsToUnderline: [HTMLLIElement, HTMLElement]) {
   ])
 
 }
-
-function changeImage(e: MouseEvent, view: ImageViewer, images: Image[]|null|undefined) {
-
-
-  imageIndexToDisplay += view;
-
-  if(images != undefined){
-    if (imageIndexToDisplay < 0 && images) {
-      imageIndexToDisplay = images.length - 1
-    } else if (imageIndexToDisplay > images.length - 1) {
-      imageIndexToDisplay = 0;
-    }
-  
-    let figure = (e.target as HTMLElement).parentElement?.querySelector("figure") as HTMLElement;
-  
-    let img = figure.querySelector("img") as HTMLImageElement;
-  
-    figure.removeChild(img);
-  
-    img.src = images[imageIndexToDisplay].src;
-    img.alt = images[imageIndexToDisplay].alt;
-    img.title = images[imageIndexToDisplay].title;
-  
-    figure.appendChild(img);
-  }
-}
-
-
-async function loadProjects(): Promise<Map<string, Project[]>> {
-
-
-  return fetch("/scripts/project.json")
-    .then(response => response.json());
-}
-
-
-function createElement(elementTag: string, innerHTML: string | null = null, attributes: Record<string, string> | null = null): HTMLElement {
-
-
-  let element = document.createElement(elementTag);
-
-  if (innerHTML != null) {
-    element.innerHTML = innerHTML;
-  }
-
-  if (attributes != null) {
-    Object.keys(attributes).forEach((key) => {
-      element.setAttribute(key, attributes[key]);
-    });
-  }
-  return element;
-}
-
-function appendChildren(element: HTMLElement, children: HTMLElement[]): HTMLElement {
-
-
-  children.forEach(child => {
-    element.appendChild(child);
-  })
-  return element;
-}
-
-
-function createImgAsButton(callBack: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null, attributes: Record<string, string> | null = null, src: string = "/images/chevron.png") {
-
-
-  let button = createElement("img", null, { src })
-
-  if (attributes != null) {
-    Object.keys(attributes).forEach((key) => {
-      button.setAttribute(key, attributes[key]);
-    });
-  }
-
-  button.onclick = callBack;
-
-  return button;
-}
-
-
