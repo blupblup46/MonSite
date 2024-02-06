@@ -115,7 +115,6 @@ function buildProjects() {
 
 function buildProjectNav() {
 
-
   projectList.forEach((projects, context) => {
     let details = document.createElement("details");
     details.addEventListener("toggle", () => onDetailsOpen(details));

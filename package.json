@@ -22,7 +22,7 @@
     "@parcel/transformer-typescript-types": "^2.11.0",
     "chart.js": "^4.4.1",
     "parcel": "^2.11.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.0-dev.20240206"
   },
   "description": ""
 }
