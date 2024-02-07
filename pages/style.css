@@ -43,7 +43,7 @@ body{
 }
 
 p{
-    font-family: PWix;
+    font-family: PWix, Arial, Helvetica, sans-serif;
     line-height: 1.25em;
     text-align: left;
     padding: 0em 2em;
@@ -54,8 +54,8 @@ strong, h1{
 }
 
 h1, h2, h3, h4{
-    font-family: PWixBold;
-
+    font-family: PWix, Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 h1{
@@ -83,6 +83,7 @@ h2, h3, h4, a{
 }
 
 ul{
+    font-family: PWix, Arial, Helvetica, sans-serif;
     list-style: none;
     padding: 0em;
     margin: 0em;
@@ -91,7 +92,11 @@ ul{
     justify-content: space-evenly;
     height: 50%;
     margin: 1.5em;
+}
 
+summary{
+    font-family: PWix, Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 .underlined{
