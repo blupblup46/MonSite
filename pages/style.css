@@ -20,13 +20,6 @@
     display: none;
 }
 
-#Contact{
-    position: absolute;
-    bottom: 50px;
-    font-size: 30px;
-    font-weight: bolder;
-    align-self: center;
-}
 
 .previousButton{
     transform: rotate(180deg);
