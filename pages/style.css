@@ -20,6 +20,14 @@
     display: none;
 }
 
+#Contact{
+    position: absolute;
+    bottom: 5vh;
+    font-size: 30px;
+    font-weight: bolder;
+    align-self: center;
+}
+
 .previousButton{
     transform: rotate(180deg);
 }
@@ -390,6 +398,46 @@ main[activePage="Experiences"] .description{
     width: 100%;
 }
 
+/* CONTACT */
+
+main[activePage="Contact"] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+main[activePage="Contact"] figure img{
+    width: 60%;
+}
+
+main[activePage="Contact"] article{
+    margin: 1em;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px 1px grey;
+    min-height: 40%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main[activePage="Contact"] p{
+   text-align: center;
+   font-size: 1.25em;
+   vertical-align: baseline;
+
+}
+
+main[activePage="Contact"] p a img{
+    height: 30px;
+    vertical-align: top;
+
+ 
+ }
+
+
 
 @media (width < 1300px){
 
@@ -432,6 +480,28 @@ main[activePage="Experiences"] .description{
 
     main[activePage="Experiences"] article{
         padding: 10px;
+    }
+
+    main[activePage="Contact"] {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    main[activePage="Contact"] figure img{
+        width: auto;
+        height: 80px;
+    }
+
+    main[activePage="Contact"] article{
+        margin: 0.5em;
+        border-radius: 20px;
+        box-shadow: 5px 5px 10px 1px grey;
+        min-height: auto;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
 
