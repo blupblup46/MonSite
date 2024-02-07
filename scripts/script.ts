@@ -173,18 +173,24 @@ function buildProjectHTML(elementsToUnderline: [HTMLLIElement, HTMLElement]) {
   let figureSelectorContainer = createElement("div", null, { class: "figures-container" });
 
   if(image != undefined){
+
+    let figureSelector = [
+      appendChildren(
+      createElement("figure"),
+      [createElement("img", null, { src: image.src, alt: image.alt, title: image.title })]
+      )
+    ]
+
+    if(clickedProject?.images?.length === undefined || clickedProject?.images?.length > 1){
+      figureSelector.unshift(createImgAsButton((e: MouseEvent) => changeImage(e, Viewer.previous, clickedProject?.images), { class: "image-button"}))
+      figureSelector.push(createImgAsButton((e: MouseEvent) => changeImage(e, Viewer.next, clickedProject?.images), { class: "image-button previousButton"}))
+    }
+
     appendChildren(
       figureSelectorContainer,
-      [createImgAsButton((e: MouseEvent) => changeImage(e, Viewer.previous, clickedProject?.images), { class: "image-button" }),
-      appendChildren(
-        createElement("figure"),
-        [createElement("img", null, { src: image.src, alt: image.alt, title: image.title })]
-      ),
-      createImgAsButton((e: MouseEvent) => changeImage(e, Viewer.next, clickedProject?.images), { class: "image-button previousButton" })
-      ]
+      figureSelector
     )
   }
- 
 
   appendChildren(main, [
     createElement("h2", clickedProject?.title),

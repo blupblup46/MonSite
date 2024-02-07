@@ -109,7 +109,7 @@ export class ExperiencesLoader {
                 appendChildren(
                     createElement("div"),
                     [
-                        createElement("h3", elementLearned.element),
+                        createElement("h4", elementLearned.element),
                         createElement("p", elementLearned.comment)
                     ]
                 )

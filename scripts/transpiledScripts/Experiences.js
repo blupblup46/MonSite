@@ -62,7 +62,7 @@ export class ExperiencesLoader {
         learned.push(createElement("h3", "Acquis"));
         Object.values(experience.learned).forEach((elementLearned) => {
             learned.push(appendChildren(createElement("div"), [
-                createElement("h3", elementLearned.element),
+                createElement("h4", elementLearned.element),
                 createElement("p", elementLearned.comment)
             ]));
         });

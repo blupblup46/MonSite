@@ -9,15 +9,14 @@
             "learned": "Travailler sur un gros projet, capacités organisationnelles",
             "images": [
                 {
-                    "src": "/images/Projet2.webp",
-                    "alt": "Projet 2",
-                    "title": "Yams",
-                    "width": "200"
+                    "src": "/images/yams1.webp",
+                    "alt": "Projet Yams",
+                    "title": "Yams"
                 },
                 {
-                    "src": "/images/Yams-2.png",
-                    "alt": "Projet 1",
-                    "title": "Site vitrine de KOH frais"
+                    "src": "/images/yams2.png",
+                    "alt": "Capture d'écran du projet Yams",
+                    "title": "Yams"
                 }
             ]
         },
@@ -29,8 +28,13 @@
             "learned": "Être chef de projet, étudier des besoins, utilisation de GitHub",
             "images": [
                 {
-                    "src": "/images/projet1.webp",
-                    "alt": "Projet 1",
+                    "src": "/images/kohFrais1.webp",
+                    "alt": "Projet de site vitrine",
+                    "title": "Site vitrine de KOH frais"
+                },
+                {
+                    "src": "/images/kohFrais2.png",
+                    "alt": "Projet de site vitrine",
                     "title": "Site vitrine de KOH frais"
                 }
             ]
@@ -44,8 +48,8 @@
             "learned": "Communication au client, respecter des contraintes, conception UML",
             "images": [
                 {
-                "src": "/images/Projet3.webp",
-                "alt": "Projet 3",
+                "src": "/images/grafotron1.webp",
+                "alt": "Projet de générateur de graphique avec Gnuplot",
                 "title": "Générateur de graph"
                 }
             ]
@@ -57,8 +61,8 @@
             "tools": "PostGreSQL, PLPGSQL",
             "learned": "Communication au client, respecter des contraintes, conception UML",
             "images": [{
-                "src": "/images/Projet4.jpeg",
-                "alt": "Projet 4",
+                "src": "/images/BDDEtudiant1.jpeg",
+                "alt": "Projet de base de données d'étudiants",
                 "title": "BDD d'étudiants"
             }]
         }
@@ -72,7 +76,7 @@
             "tools": "HTML, Typescript, CSS",
             "learned": "Travailler en autonomie et se fixer des objectifs de <strong>maintenablité</strong> et <strong>d'accessibilité</strong>",
             "images": [{
-                "src": "/images/Captures-site.png",
+                "src": "/images/thisSite1.png",
                 "alt": "Ce site",
                 "title": "Ce site"
             }]
@@ -87,7 +91,7 @@
             "tools": "Springboot, Prometheus, Grafana, Typescript",
             "learned": "Travailler en <strong>entreprise</strong>, <strong>rendre compte</strong> de mon activité et réaliser une <strong>démo</strong> de cet outil",
             "images": [{
-                "src": "/images/activite_co2Counter.png",
+                "src": "/images/co2Counter1.png",
                 "alt": "CO2 Counter",
                 "title": "CO2 Counter"
             }]
@@ -99,7 +103,7 @@
             "tools": "Playwright",
             "learned": "Travailler en <strong>entreprise</strong>, développer un <strong>outil de test</strong> interne, ",
             "images": [{
-                "src": "/images/Canvas-grid.png",
+                "src": "/images/canvasGrid1.png",
                 "alt": "Tableau en canvas",
                 "title": "Exemple de tableau canvas"
             }]

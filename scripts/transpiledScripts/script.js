@@ -108,6 +108,7 @@ function buildProjectNav() {
     document.querySelector("details li").click();
 }
 function buildProjectHTML(elementsToUnderline) {
+    var _a, _b;
     imageIndexToDisplay = 0;
     main.innerHTML = "";
     document.querySelectorAll("details li").forEach(s => s.removeAttribute("class"));
@@ -133,10 +134,14 @@ function buildProjectHTML(elementsToUnderline) {
     let image = clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.images[imageIndexToDisplay];
     let figureSelectorContainer = createElement("div", null, { class: "figures-container" });
     if (image != undefined) {
-        appendChildren(figureSelectorContainer, [createImgAsButton((e) => changeImage(e, Viewer.previous, clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.images), { class: "image-button" }),
-            appendChildren(createElement("figure"), [createElement("img", null, { src: image.src, alt: image.alt, title: image.title })]),
-            createImgAsButton((e) => changeImage(e, Viewer.next, clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.images), { class: "image-button previousButton" })
-        ]);
+        let figureSelector = [
+            appendChildren(createElement("figure"), [createElement("img", null, { src: image.src, alt: image.alt, title: image.title })])
+        ];
+        if (((_a = clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.images) === null || _a === void 0 ? void 0 : _a.length) === undefined || ((_b = clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.images) === null || _b === void 0 ? void 0 : _b.length) > 1) {
+            figureSelector.unshift(createImgAsButton((e) => changeImage(e, Viewer.previous, clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.images), { class: "image-button" }));
+            figureSelector.push(createImgAsButton((e) => changeImage(e, Viewer.next, clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.images), { class: "image-button previousButton" }));
+        }
+        appendChildren(figureSelectorContainer, figureSelector);
     }
     appendChildren(main, [
         createElement("h2", clickedProject === null || clickedProject === void 0 ? void 0 : clickedProject.title),

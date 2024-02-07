@@ -53,25 +53,31 @@ strong, h1{
     color: var(--mainColor);
 }
 
+h1, h2, h3, h4{
+    font-family: PWixBold;
+
+}
+
 h1{
     font-size: 3em;
-    font-family: PWixBold;
 }
 
 h2{
     font-size: 1.5em;
-    font-family: PWixBold;
     text-align: center;
     width: 100%;
 }
 
-h3{
-    font-family: PWixBold;
+h3, h4{
     padding: 0em;
     margin: 0em;
 }
 
-h2, h3, a{
+h4{
+    font-size: 1em;
+}
+
+h2, h3, h4, a{
     color: var(--secondaryColor);
 
 }
@@ -287,6 +293,9 @@ main[activePage="Projects"] .figures-container figure{
     margin: 0px;
 }
 
+main[activePage="Projects"] .project-container{
+    padding: 1em;
+}
 
 /* EDUCATION */
 
