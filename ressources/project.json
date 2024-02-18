@@ -1,5 +1,31 @@
 {
-
+    "DCbrain": [
+       
+        {
+            "title": "CO2 Counter",
+            "context": "En <strong>entreprise</strong>",
+            "details": "Ce projet réalisé pendant ma première année d'alternance chez <strong>DCbrain</strong> vise à pouvoir estimer la <strong>consommation</strong> et <strong>rejet CO2</strong> d'un <strong>node</strong> hébergé dans un datacenter et des instances <strong>kubernetes</strong> exécutées sur ces nodes.<br>Basé sur <strong><a href=\"https://github.com/hubblo-org/scaphandre\">Scaphandre</a></strong>, un logiciel <strong>open-source</strong>, sur une collection de données recoltés par mes soins et des <strong>metrics</strong> d'ultisation des composants du serveur, cette application a été réalisé en JAVA avec le framework <strong>Springboot</strong>.<br>J'ai également développé une <strong>interface</strong> pour que les clients de DCbrain consultent leurs rejets CO2",
+            "tools": "Springboot, Prometheus, Grafana, Typescript",
+            "learned": "Travailler en <strong>entreprise</strong>, <strong>rendre compte</strong> de mon activité et réaliser une <strong>démo</strong> de cet outil",
+            "images": [{
+                "src": "/images/co2Counter1.png",
+                "alt": "CO2 Counter",
+                "title": "CO2 Counter"
+            }]
+        },
+        {
+            "title": "Canvas test helper",
+            "context": "En <strong>entreprise</strong>",
+            "details": "Dans l'interface de l'outil de DCbrain, des tableaux sont affichés dans un élément <strong>HTML canvas</strong>. Des actions à la souris sont disponnibles pour récupérer les données. Afin de tester une valeur, il faut <strong>connaitre la position</strong> de la cellule afin de la cliquer.<br>Après avoir intégré un <strong>tableau HTML</strong> contenant les informations nécessaires, j'ai développé une <strong>API</strong> en Java grâce au framework <strong><a href=\"https://playwright.dev/\">Playwright</a></strong>. En lui fournissant un numéro de ligne et un nom de colonne, l'API est capable de <strong>récupérer automatiquement</strong> la donnée de la cellule.",
+            "tools": "Playwright",
+            "learned": "Travailler en <strong>entreprise</strong>, développer un <strong>outil de test</strong> interne, ",
+            "images": [{
+                "src": "/images/canvasGrid1.png",
+                "alt": "Tableau en canvas",
+                "title": "Exemple de tableau canvas"
+            }]
+        }
+    ],
     "BUT": [
         {
             "title": "Yams",
@@ -81,32 +107,6 @@
                 "title": "Ce site"
             }]
         }
-    ],
-    "DCbrain": [
-       
-        {
-            "title": "CO2 Counter",
-            "context": "En <strong>entreprise</strong>",
-            "details": "Ce projet réalisé pendant ma première année d'alternance chez <strong>DCbrain</strong> vise à pouvoir estimer la <strong>consommation</strong> et <strong>rejet CO2</strong> d'un <strong>node</strong> hébergé dans un datacenter et des instances <strong>kubernetes</strong> exécutées sur ces nodes.<br>Basé sur <strong><a href=\"https://github.com/hubblo-org/scaphandre\">Scaphandre</a></strong>, un logiciel <strong>open-source</strong>, sur une collection de données recoltés par mes soins et des <strong>metrics</strong> d'ultisation des composants du serveur, cette application a été réalisé en JAVA avec le framework <strong>Springboot</strong>.<br>J'ai également développé une <strong>interface</strong> pour que les clients de DCbrain consultent leurs rejets CO2",
-            "tools": "Springboot, Prometheus, Grafana, Typescript",
-            "learned": "Travailler en <strong>entreprise</strong>, <strong>rendre compte</strong> de mon activité et réaliser une <strong>démo</strong> de cet outil",
-            "images": [{
-                "src": "/images/co2Counter1.png",
-                "alt": "CO2 Counter",
-                "title": "CO2 Counter"
-            }]
-        },
-        {
-            "title": "Canvas test helper",
-            "context": "En <strong>entreprise</strong>",
-            "details": "Dans l'interface de l'outil de DCbrain, des tableaux sont affichés dans un élément <strong>HTML canvas</strong>. Des actions à la souris sont disponnibles pour récupérer les données. Afin de tester une valeur, il faut <strong>connaitre la position</strong> de la cellule afin de la cliquer.<br>Après avoir intégré un <strong>tableau HTML</strong> contenant les informations nécessaires, j'ai développé une <strong>API</strong> en Java grâce au framework <strong><a href=\"https://playwright.dev/\">Playwright</a></strong>. En lui fournissant un numéro de ligne et un nom de colonne, l'API est capable de <strong>récupérer automatiquement</strong> la donnée de la cellule.",
-            "tools": "Playwright",
-            "learned": "Travailler en <strong>entreprise</strong>, développer un <strong>outil de test</strong> interne, ",
-            "images": [{
-                "src": "/images/canvasGrid1.png",
-                "alt": "Tableau en canvas",
-                "title": "Exemple de tableau canvas"
-            }]
-        }
     ]
+   
 }
