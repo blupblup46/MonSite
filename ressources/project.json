@@ -3,7 +3,7 @@
         {
             "title": "CO2 Counter",
             "context": "En <strong>entreprise</strong>",
-            "details": "Ce projet réalisé pendant ma première année d'alternance chez <strong>DCbrain</strong> vise à pouvoir estimer la <strong>consommation</strong> et <strong>rejet CO2</strong> d'un <strong>node</strong> hébergé dans un datacenter et des instances <strong>kubernetes</strong> exécutées sur ces nodes.<br>Basé sur <strong><a href=\"https://github.com/hubblo-org/scaphandre\">Scaphandre</a></strong>, un logiciel <strong>open-source</strong>, sur une collection de données recoltés par mes soins et des <strong>metrics</strong> d'ultisation des composants du serveur, cette application a été réalisé en JAVA avec le framework <strong>Springboot</strong>.<br>J'ai également développé une <strong>interface</strong> pour que les clients de DCbrain consultent leurs rejets CO2",
+            "details": "Ce projet réalisé pendant ma première année d'alternance chez <strong>DCbrain</strong> vise à pouvoir estimer la <strong>consommation</strong> et <strong>rejet CO2</strong> d'un <strong>node</strong> hébergé dans un datacenter et des instances <strong>kubernetes</strong> exécutées sur ces nodes.<br>Basé sur <strong><a href=\"https://github.com/hubblo-org/scaphandre\">Scaphandre</a></strong>, un logiciel <strong>open-source</strong>, sur une collection de données recoltés par mes soins et des <strong>metrics</strong> d'utilisation des composants du serveur, cette application a été réalisé en JAVA avec le framework <strong>Springboot</strong>.<br>J'ai également développé une <strong>interface</strong> pour que les clients de DCbrain consultent leurs rejets CO2",
             "tools": "Springboot, Prometheus, Grafana, Typescript",
             "learned": "Travailler en <strong>entreprise</strong>, <strong>rendre compte</strong> de mon activité et réaliser une <strong>démo</strong> de cet outil",
             "images": [
@@ -22,14 +22,38 @@
         {
             "title": "Canvas test helper",
             "context": "En <strong>entreprise</strong>",
-            "details": "Dans l'interface de l'outil de DCbrain, des tableaux sont affichés dans un élément <strong>HTML canvas</strong>. Des actions à la souris sont disponnibles pour récupérer les données. Afin de tester une valeur, il faut <strong>connaitre la position</strong> de la cellule afin de la cliquer.<br>Après avoir intégré un <strong>tableau HTML</strong> contenant les informations nécessaires, j'ai développé une <strong>API</strong> en Java grâce au framework <strong><a href=\"https://playwright.dev/\">Playwright</a></strong>. En lui fournissant un numéro de ligne et un nom de colonne, l'API est capable de <strong>récupérer automatiquement</strong> la donnée de la cellule.",
+            "details": "Dans l'interface de l'outil de DCbrain, des tableaux sont affichés dans un élément <strong>HTML canvas</strong>. Des actions à la souris sont disponnibles pour récupérer les données. Afin de tester une valeur, il faut <strong>connaitre la position</strong> de la cellule afin de la cliquer.<br>Après avoir intégré un <strong>tableau HTML</strong> contenant les informations nécessaires au positionnement d'un clic sur une cellule du canvas, j'ai développé une <strong>API</strong> en Java grâce au framework <strong><a href=\"https://playwright.dev/\">Playwright</a></strong>. En lui fournissant un numéro de ligne et un nom de colonne, l'API est capable de <strong>récupérer automatiquement</strong> la donnée de la cellule.",
             "tools": "Playwright",
-            "learned": "Travailler en <strong>entreprise</strong>, développer un <strong>outil de test</strong> interne, ",
+            "learned": "Travailler en <strong>entreprise</strong>, développer un <strong>outil de test</strong> interne",
             "images": [
                 {
                     "src": "/images/canvasGrid1.png",
                     "alt": "Tableau en canvas",
                     "title": "Exemple de tableau canvas"
+                }
+            ]
+        },
+        {
+            "title": "Format helper",
+            "context": "En <strong>entreprise</strong>",
+            "details": "Afin de visualiser les données dans l'interface du logiciel de DCbrain, un utilisateur peut appliquer des <strong>formats</strong>. Mon rôle était de développer une <srtong>interface</strong> afin de pouvoir générer un format.<br><br>L'interface peut aussi <strong>s'adapter</strong> en fonction d'un format existant pour pouvoir <strong>facilement</strong> le modifier",
+            "tools": "Typescript",
+            "learned": "Prendre la place de <strong>l'utilisateur final</strong>",
+            "images": [
+                {
+                    "src": "/images/interfaceNombres.png",
+                    "alt": "Interface pour les formats de nombres",
+                    "title": "Interface pour les formats de nombres"
+                },
+                {
+                    "src": "/images/interfaceBool.png",
+                    "alt": "Interface pour les formats de booléens",
+                    "title": "Interface pour les formats de booléens"
+                },
+                {
+                    "src": "/images/interfaceDate.png",
+                    "alt": "Interface pour les formats de dates",
+                    "title": "Interface pour les formats de dates"
                 }
             ]
         }
@@ -90,7 +114,7 @@
         {
             "title": "Base de données d'étudiants",
             "context": "En <strong>équipe</strong>",
-            "details": "Pour ce projet, nous avons <strong>développé</strong> une base de données à partir d'un <strong>diagramme UML</strong> regroupant des informations d'étudiants. Nous avons <strong>peuplé</strong> notre base à partir de <strong>fichier tableur</strong> puis nous l'avons exploitée avec quelques requettes.",
+            "details": "Pour ce projet, nous avons <strong>développé</strong> une base de données à partir d'un <strong>diagramme UML</strong> regroupant des informations d'étudiants. Nous avons <strong>peuplé</strong> notre base à partir de <strong>fichiers excel</strong> puis nous l'avons exploitée avec quelques requettes.",
             "tools": "PostGreSQL, PLPGSQL",
             "learned": "Communication au client, respecter des contraintes, conception UML",
             "images": [
@@ -106,7 +130,7 @@
         {
             "title": "Cette page",
             "context": "En <strong>autonomie</strong>",
-            "details": "Cette page permet de me présenter et d'exposer directement certaines de mes compétences. Ce projet m'a permis en <strong>autonomie</strong> de faire le point sur mes compétences et de m'entrainer a réaliser un site responsif. J'ai également veillé à la <strong>facilité d'évolution</strong> de ce site puisque les projets présentés sont chargés à partir d'un fichier JSON",
+            "details": "Cette page permet de me présenter et d'exposer directement certaines de mes compétences.<br>Ce projet m'a permis en <strong>autonomie</strong> de faire le point sur mes compétences et de m'entrainer a réaliser un site responsif. J'ai également veillé à la <strong>facilité d'évolution</strong> de ce site puisque les projets et les expériences présentés sont chargés à partir d'un fichier JSON",
             "tools": "HTML, Typescript, CSS",
             "learned": "Travailler en autonomie et se fixer des objectifs de <strong>maintenablité</strong> et <strong>d'accessibilité</strong>",
             "images": [
