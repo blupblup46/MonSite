@@ -148,7 +148,7 @@ nav{
 
     font-size: large;
     font-family: 'Courier New', Courier, monospace;
-
+    color: white;
     background-color: var(--mainColor);
 
 }
