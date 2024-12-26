@@ -432,7 +432,7 @@ main[activePage="Contact"] p a img{
 
 
 
-@media (width < 1300px){
+@media (width < 1025px){
 
   
 
@@ -498,7 +498,7 @@ main[activePage="Contact"] p a img{
     }
 }
 
-@media (width < 750px){
+@media (width < 480px){
   
 
     body main{
