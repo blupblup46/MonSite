@@ -291,6 +291,17 @@ main[activePage="Projects"] .project-container{
     flex-direction: row-reverse;
 }
 
+main[activePage="Projects"] .project-container section,
+main[activePage="Projects"] .project-container section div{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+main[activePage="Projects"] .project-container section div h3{
+    padding-left: 1.5em;
+}
+
 
 main[activePage="Projects"] .figures-container{
     display: flex;
